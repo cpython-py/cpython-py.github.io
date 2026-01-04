@@ -1,0 +1,30 @@
+# IDE files
+.idea/
+*.iml
+
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Windows files
+Thumbs.db
+.DS_Store
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build files
+build/
+dist/
+
+# Temporary files
+*.tmp
+*.temp
