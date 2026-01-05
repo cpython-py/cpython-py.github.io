@@ -1585,6 +1585,9 @@
             this.reset();
         });
 
+        // 资料存储数组
+        let resources = [];
+
         // 文件预览功能
         const uploadFileInput = document.getElementById('uploadFile');
         const filePreview = document.getElementById('filePreview');
@@ -1634,10 +1637,107 @@
             }
         });
 
+        // 创建资料卡片
+        function createResourceCard(resource) {
+            const card = document.createElement('div');
+            card.className = 'resource-card fade-in-up';
+            
+            // 文件图标
+            const fileExtension = resource.file.name.split('.').pop().toLowerCase();
+            let fileIcon = '📁';
+            if (['pdf'].includes(fileExtension)) {
+                fileIcon = '📄';
+            } else if (['doc', 'docx'].includes(fileExtension)) {
+                fileIcon = '📝';
+            } else if (['zip', 'rar'].includes(fileExtension)) {
+                fileIcon = '📦';
+            } else if (['mp4', 'mp3'].includes(fileExtension)) {
+                fileIcon = '🎬';
+            }
+            
+            card.innerHTML = `
+                <div class="resource-image">${fileIcon}</div>
+                <div class="resource-content">
+                    <span class="resource-category">${resource.category}</span>
+                    <h3 class="resource-title">${resource.title}</h3>
+                    <p class="resource-description">${resource.description}</p>
+                    <div class="resource-meta">
+                        <span>📅 ${resource.uploadDate}</span>
+                        <span>👤 分享者：${resource.uploader}</span>
+                    </div>
+                    <div class="resource-stats">
+                        <span class="stat-item">📥 下载：${resource.downloads}</span>
+                        <span class="stat-item">⭐ 评分：${resource.rating}</span>
+                        <span class="stat-item">💬 评论：${resource.comments}</span>
+                    </div>
+                    <div class="tags">
+                        ${resource.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <button class="resource-button" data-resource-id="${resource.id}">免费下载</button>
+                </div>
+            `;
+            
+            // 添加下载事件
+            card.querySelector('.resource-button').addEventListener('click', function() {
+                downloadResource(resource);
+            });
+            
+            return card;
+        }
+
+        // 下载资料
+        function downloadResource(resource) {
+            showNotification(`正在下载：${resource.title}`, 'info');
+            // 模拟下载成功
+            setTimeout(() => {
+                showNotification(`下载完成：${resource.title}`, 'success');
+                // 更新下载次数
+                resource.downloads++;
+                updateResourceStats(resource);
+            }, 1500);
+        }
+
+        // 更新资料统计信息
+        function updateResourceStats(resource) {
+            const cards = document.querySelectorAll('.resource-card');
+            cards.forEach(card => {
+                const button = card.querySelector('.resource-button');
+                if (button.getAttribute('data-resource-id') === resource.id) {
+                    const downloadStat = card.querySelector('.stat-item:nth-child(1)');
+                    downloadStat.textContent = `📥 下载：${resource.downloads}`;
+                }
+            });
+        }
+
+        // 显示上传的资料
+        function displayUploadedResources() {
+            const resourcesGrid = document.querySelector('.resources-grid');
+            if (!resourcesGrid) return;
+            
+            // 清空现有资料
+            resourcesGrid.innerHTML = '';
+            
+            // 添加所有资料卡片
+            resources.forEach(resource => {
+                const card = createResourceCard(resource);
+                resourcesGrid.appendChild(card);
+            });
+            
+            // 更新结果计数
+            document.getElementById('resultCount').textContent = resources.length;
+        }
+
         // 上传表单提交
         document.getElementById('uploadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
+            
+            // 获取表单数据
+            const title = formData.get('title');
+            const category = formData.get('category');
+            const description = formData.get('description');
+            const tags = formData.get('tags').split(',').map(tag => tag.trim()).filter(tag => tag);
+            const files = uploadFileInput.files;
             
             // 显示进度条
             const progressContainer = document.getElementById('uploadProgress');
@@ -1655,8 +1755,34 @@
                     
                     // 模拟上传成功后的延迟
                     setTimeout(() => {
+                        // 为每个文件创建资源对象
+                        for (let i = 0; i < files.length; i++) {
+                            const file = files[i];
+                            const resource = {
+                                id: Date.now() + i,
+                                title: i > 0 ? `${title} (${i + 1})` : title,
+                                category: category,
+                                description: description,
+                                file: file,
+                                uploader: '当前用户',
+                                uploadDate: new Date().toISOString().split('T')[0],
+                                downloads: 0,
+                                rating: 5.0,
+                                comments: 0,
+                                tags: tags
+                            };
+                            
+                            // 添加到资源数组
+                            resources.push(resource);
+                        }
+                        
                         // 显示成功通知
-                        showNotification('资料上传成功！审核通过后将在平台展示', 'success');
+                        showNotification('资料上传成功！已显示在平台上', 'success');
+                        
+                        // 更新资料显示
+                        displayUploadedResources();
+                        
+                        // 关闭模态框并重置表单
                         modals.upload.style.display = 'none';
                         this.reset();
                         filePreview.innerHTML = '';
