@@ -66,6 +66,35 @@
             transform: translateY(-2px);
         }
 
+        /* 用户操作按钮 */
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .user-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .user-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
         /* 搜索框样式 */
         .search-container {
             display: flex;
@@ -74,6 +103,7 @@
             border-radius: 25px;
             padding: 0.5rem 1rem;
             backdrop-filter: blur(10px);
+            position: relative;
         }
 
         .search-container input {
@@ -95,6 +125,54 @@
             color: white;
             cursor: pointer;
             padding: 0.5rem;
+        }
+
+        /* 搜索建议样式 */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .search-suggestion-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .search-suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-suggestion-item:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 深色模式下的搜索建议样式 */
+        body.dark-mode .search-suggestions {
+            background: #16213e;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .search-suggestion-item {
+            color: #e0e0e0;
+            border-bottom-color: #0f3460;
+        }
+
+        body.dark-mode .search-suggestion-item:hover {
+            background: #667eea;
+            color: white;
         }
 
         /* 英雄区域样式 */
@@ -353,35 +431,40 @@
             margin-bottom: 4rem;
         }
 
-        /* 分页样式 */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 3rem;
-        }
-
-        .pagination button {
+        /* 筛选和排序工具栏 */
+        .filter-toolbar {
             background: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-info {
+            color: #666;
+        }
+
+        .sort-options {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .sort-options label {
+            color: #666;
+        }
+
+        .sort-options select {
+            padding: 0.5rem;
             border: 1px solid #e0e0e0;
-            padding: 0.8rem 1.2rem;
             border-radius: 8px;
+            background: white;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .pagination button:hover:not(.active) {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .pagination button.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
         }
 
         /* 页脚样式 */
@@ -460,6 +543,90 @@
             font-size: 0.9rem;
         }
 
+        /* 暗模式支持 */
+        body.dark-mode {
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .resource-card,
+        body.dark-mode .category-card,
+        body.dark-mode .filter-toolbar {
+            background: #16213e;
+            border-color: #0f3460;
+        }
+
+        body.dark-mode .resource-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .resource-description,
+        body.dark-mode .stat-item,
+        body.dark-mode .resource-meta {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .tag {
+            background: #0f3460;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .tag:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        body.dark-mode footer {
+            background: #0f0f1e;
+        }
+
+        body.dark-mode .footer-bottom {
+            border-top-color: #1a1a2e;
+        }
+
+        /* 基于系统偏好的暗模式支持 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a2e;
+                color: #e0e0e0;
+            }
+
+            .resource-card,
+            .category-card,
+            .filter-toolbar {
+                background: #16213e;
+                border-color: #0f3460;
+            }
+
+            .resource-title {
+                color: #e0e0e0;
+            }
+
+            .resource-description,
+            .stat-item,
+            .resource-meta {
+                color: #b0b0b0;
+            }
+
+            .tag {
+                background: #0f3460;
+                color: #e0e0e0;
+            }
+
+            .tag:hover {
+                background: #667eea;
+                color: white;
+            }
+
+            footer {
+                background: #0f0f1e;
+            }
+
+            .footer-bottom {
+                border-top-color: #1a1a2e;
+            }
+        }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             nav {
@@ -470,7 +637,23 @@
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 1rem;
+                gap: 0.5rem;
+                padding: 0;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .user-actions {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .user-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
             }
 
             .hero h1 {
@@ -482,8 +665,25 @@
                 align-items: stretch;
             }
 
+            .hero-search input {
+                width: 100%;
+            }
+
             .categories-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1rem;
+            }
+
+            .category-card {
+                padding: 1.5rem 0.5rem;
+            }
+
+            .category-card i {
+                font-size: 2rem;
+            }
+
+            .category-card h3 {
+                font-size: 0.9rem;
             }
 
             .resources-grid {
@@ -492,6 +692,61 @@
 
             .container {
                 padding: 0 15px;
+            }
+
+            /* 移动端搜索建议优化 */
+            .search-suggestions {
+                max-width: calc(100vw - 40px);
+                left: 20px;
+                right: 20px;
+            }
+
+            /* 移动端模态框优化 */
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            /* 移动端表单优化 */
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-btn {
+                width: 100%;
+            }
+
+            /* 移动端通知优化 */
+            #notifications {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+            }
+
+            .notification {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .search-container input {
+                width: 150px;
+            }
+
+            .nav-links {
+                font-size: 0.9rem;
             }
         }
 
@@ -509,6 +764,150 @@
 
         .fade-in-up {
             animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        .form-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .form-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .form-btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .form-btn-secondary:hover {
+            background: #e0e0e0;
         }
 
         /* 加载更多按钮 */
@@ -530,6 +929,145 @@
             color: white;
             transform: translateY(-2px);
         }
+
+        /* 回到顶部按钮 */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+            }
+        }
+
+        #backToTop:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            animation: none;
+        }
+
+        /* 通知系统样式 */
+        #notifications {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .notification {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInRight 0.3s ease forwards;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .notification.success {
+            border-left: 4px solid #4CAF50;
+        }
+
+        .notification.error {
+            border-left: 4px solid #f44336;
+        }
+
+        .notification.info {
+            border-left: 4px solid #2196F3;
+        }
+
+        .notification.warning {
+            border-left: 4px solid #ff9800;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .notification-message {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .notification-close {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .notification-close:hover {
+            color: #333;
+        }
+
+        /* 深色模式下的通知样式 */
+        body.dark-mode .notification {
+            background: #16213e;
+        }
+
+        body.dark-mode .notification-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .notification-message {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .notification-close {
+            color: #777;
+        }
+
+        body.dark-mode .notification-close:hover {
+            color: #e0e0e0;
+        }
     </style>
 </head>
 <body>
@@ -543,11 +1081,12 @@
                     <li><a href="#">分类浏览</a></li>
                     <li><a href="#">热门资料</a></li>
                     <li><a href="#">最新上传</a></li>
-                    <li><a href="#">关于我们</a></li>
                 </ul>
-                <div class="search-container">
-                    <input type="text" placeholder="搜索资料...">
-                    <button>🔍</button>
+                <div class="user-actions">
+                    <button class="user-btn" id="themeToggle">🌓 切换主题</button>
+                    <button class="user-btn" id="loginBtn">登录</button>
+                    <button class="user-btn" id="registerBtn">注册</button>
+                    <button class="user-btn upload-btn" id="uploadBtn">📤 上传资料</button>
                 </div>
             </nav>
         </div>
@@ -568,6 +1107,22 @@
     <!-- 主要内容 -->
     <main>
         <div class="container">
+            <!-- 筛选和排序工具栏 -->
+            <div class="filter-toolbar">
+                <div class="filter-info">
+                    <span id="resultCount"></span> 个结果
+                </div>
+                <div class="sort-options">
+                    <label>排序方式：</label>
+                    <select id="sortSelect">
+                        <option value="default">默认排序</option>
+                        <option value="downloads">下载量 ↓</option>
+                        <option value="rating">评分 ↓</option>
+                        <option value="date">最新上传 ↓</option>
+                    </select>
+                </div>
+            </div>
+
             <!-- 分类浏览 -->
             <section class="categories">
                 <h2 class="section-title">浏览分类</h2>
@@ -660,56 +1215,6 @@
                             <button class="resource-button">免费下载</button>
                         </div>
                     </div>
-
-                    <!-- 资料卡片 3 -->
-                    <div class="resource-card fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="resource-image">🎨</div>
-                        <div class="resource-content">
-                            <span class="resource-category">设计创意</span>
-                            <h3 class="resource-title">UI/UX设计入门教程</h3>
-                            <p class="resource-description">从零开始学习UI/UX设计，包含设计原则、工具使用和实战案例。</p>
-                            <div class="resource-meta">
-                                <span>📅 2024-01-05</span>
-                                <span>👤 分享者：设计师小明</span>
-                            </div>
-                            <div class="resource-stats">
-                                <span class="stat-item">📥 下载：765</span>
-                                <span class="stat-item">⭐ 评分：4.9</span>
-                                <span class="stat-item">💬 评论：54</span>
-                            </div>
-                            <div class="tags">
-                                <span class="tag">UI设计</span>
-                                <span class="tag">UX设计</span>
-                                <span class="tag">Figma</span>
-                            </div>
-                            <button class="resource-button">免费下载</button>
-                        </div>
-                    </div>
-
-                    <!-- 资料卡片 4 -->
-                    <div class="resource-card fade-in-up" style="animation-delay: 0.3s;">
-                        <div class="resource-image">💻</div>
-                        <div class="resource-content">
-                            <span class="resource-category">编程开发</span>
-                            <h3 class="resource-title">JavaScript高级编程</h3>
-                            <p class="resource-description">深入学习JavaScript高级特性，包含闭包、原型链、异步编程等核心概念。</p>
-                            <div class="resource-meta">
-                                <span>📅 2024-01-01</span>
-                                <span>👤 分享者：前端工程师</span>
-                            </div>
-                            <div class="resource-stats">
-                                <span class="stat-item">📥 下载：1123</span>
-                                <span class="stat-item">⭐ 评分：4.6</span>
-                                <span class="stat-item">💬 评论：78</span>
-                            </div>
-                            <div class="tags">
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">前端开发</span>
-                                <span class="tag">高级</span>
-                            </div>
-                            <button class="resource-button">免费下载</button>
-                        </div>
-                    </div>
                 </div>
                 <button class="load-more">加载更多热门资料</button>
             </section>
@@ -718,7 +1223,7 @@
             <section class="resources-section">
                 <h2 class="section-title">🆕 最新上传</h2>
                 <div class="resources-grid">
-                    <!-- 资料卡片 5 -->
+                    <!-- 资料卡片 3 -->
                     <div class="resource-card fade-in-up">
                         <div class="resource-image">💡</div>
                         <div class="resource-content">
@@ -743,7 +1248,7 @@
                         </div>
                     </div>
 
-                    <!-- 资料卡片 6 -->
+                    <!-- 资料卡片 4 -->
                     <div class="resource-card fade-in-up" style="animation-delay: 0.1s;">
                         <div class="resource-image">📚</div>
                         <div class="resource-content">
@@ -767,56 +1272,6 @@
                             <button class="resource-button">免费下载</button>
                         </div>
                     </div>
-
-                    <!-- 资料卡片 7 -->
-                    <div class="resource-card fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="resource-image">🔒</div>
-                        <div class="resource-content">
-                            <span class="resource-category">网络安全</span>
-                            <h3 class="resource-title">网络安全基础</h3>
-                            <p class="resource-description">网络安全入门教程，包含常见威胁、防护措施和安全实践。</p>
-                            <div class="resource-meta">
-                                <span>📅 2024-01-16</span>
-                                <span>👤 分享者：安全专家</span>
-                            </div>
-                            <div class="resource-stats">
-                                <span class="stat-item">📥 下载：432</span>
-                                <span class="stat-item">⭐ 评分：4.9</span>
-                                <span class="stat-item">💬 评论：28</span>
-                            </div>
-                            <div class="tags">
-                                <span class="tag">网络安全</span>
-                                <span class="tag"> cybersecurity</span>
-                                <span class="tag">入门</span>
-                            </div>
-                            <button class="resource-button">免费下载</button>
-                        </div>
-                    </div>
-
-                    <!-- 资料卡片 8 -->
-                    <div class="resource-card fade-in-up" style="animation-delay: 0.3s;">
-                        <div class="resource-image">📈</div>
-                        <div class="resource-content">
-                            <span class="resource-category">市场营销</span>
-                            <h3 class="resource-title">数字营销实战</h3>
-                            <p class="resource-description">数字营销全攻略，包含SEO、SEM、社交媒体营销等内容。</p>
-                            <div class="resource-meta">
-                                <span>📅 2024-01-14</span>
-                                <span>👤 分享者：营销专家</span>
-                            </div>
-                            <div class="resource-stats">
-                                <span class="stat-item">📥 下载：567</span>
-                                <span class="stat-item">⭐ 评分：4.5</span>
-                                <span class="stat-item">💬 评论：39</span>
-                            </div>
-                            <div class="tags">
-                                <span class="tag">数字营销</span>
-                                <span class="tag">SEO</span>
-                                <span class="tag">社交媒体</span>
-                            </div>
-                            <button class="resource-button">免费下载</button>
-                        </div>
-                    </div>
                 </div>
                 <button class="load-more">加载更多最新资料</button>
             </section>
@@ -825,7 +1280,7 @@
             <section class="resources-section">
                 <h2 class="section-title">💎 编辑推荐</h2>
                 <div class="resources-grid">
-                    <!-- 资料卡片 9 -->
+                    <!-- 资料卡片 5 -->
                     <div class="resource-card fade-in-up">
                         <div class="resource-image">🏫</div>
                         <div class="resource-content">
@@ -850,7 +1305,7 @@
                         </div>
                     </div>
 
-                    <!-- 资料卡片 10 -->
+                    <!-- 资料卡片 6 -->
                     <div class="resource-card fade-in-up" style="animation-delay: 0.1s;">
                         <div class="resource-image">💻</div>
                         <div class="resource-content">
@@ -870,56 +1325,6 @@
                                 <span class="tag">算法</span>
                                 <span class="tag">数据结构</span>
                                 <span class="tag">编程</span>
-                            </div>
-                            <button class="resource-button">免费下载</button>
-                        </div>
-                    </div>
-
-                    <!-- 资料卡片 11 -->
-                    <div class="resource-card fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="resource-image">📊</div>
-                        <div class="resource-content">
-                            <span class="resource-category">数据分析</span>
-                            <h3 class="resource-title">Tableau数据可视化</h3>
-                            <p class="resource-description">使用Tableau创建专业的数据可视化图表和仪表板。</p>
-                            <div class="resource-meta">
-                                <span>📅 2024-01-03</span>
-                                <span>👤 分享者：数据可视化师</span>
-                            </div>
-                            <div class="resource-stats">
-                                <span class="stat-item">📥 下载：678</span>
-                                <span class="stat-item">⭐ 评分：4.7</span>
-                                <span class="stat-item">💬 评论：56</span>
-                            </div>
-                            <div class="tags">
-                                <span class="tag">Tableau</span>
-                                <span class="tag">数据可视化</span>
-                                <span class="tag">BI</span>
-                            </div>
-                            <button class="resource-button">免费下载</button>
-                        </div>
-                    </div>
-
-                    <!-- 资料卡片 12 -->
-                    <div class="resource-card fade-in-up" style="animation-delay: 0.3s;">
-                        <div class="resource-image">🎨</div>
-                        <div class="resource-content">
-                            <span class="resource-category">设计创意</span>
-                            <h3 class="resource-title">平面设计原理</h3>
-                            <p class="resource-description">平面设计基础教程，包含色彩理论、排版、构图等核心内容。</p>
-                            <div class="resource-meta">
-                                <span>📅 2024-01-02</span>
-                                <span>👤 分享者：平面设计师</span>
-                            </div>
-                            <div class="resource-stats">
-                                <span class="stat-item">📥 下载：543</span>
-                                <span class="stat-item">⭐ 评分：4.6</span>
-                                <span class="stat-item">💬 评论：43</span>
-                            </div>
-                            <div class="tags">
-                                <span class="tag">平面设计</span>
-                                <span class="tag">设计原理</span>
-                                <span class="tag">色彩</span>
                             </div>
                             <button class="resource-button">免费下载</button>
                         </div>
@@ -945,16 +1350,6 @@
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h3>快速链接</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">首页</a></li>
-                        <li><a href="#">分类浏览</a></li>
-                        <li><a href="#">热门资料</a></li>
-                        <li><a href="#">最新上传</a></li>
-                        <li><a href="#">关于我们</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
                     <h3>联系我们</h3>
                     <ul class="footer-links">
                         <li>📧 email@example.com</li>
@@ -977,25 +1372,551 @@
         </div>
     </footer>
 
+    <!-- 注册模态框 -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📝 用户注册</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regUsername">用户名</label>
+                        <input type="text" id="regUsername" name="username" placeholder="请输入用户名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">邮箱</label>
+                        <input type="email" id="regEmail" name="email" placeholder="请输入邮箱" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">密码</label>
+                        <input type="password" id="regPassword" name="password" placeholder="请输入密码" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">确认密码</label>
+                        <input type="password" id="regConfirmPassword" name="confirmPassword" placeholder="请确认密码" required minlength="6">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="form-btn form-btn-secondary" id="closeRegisterModal">取消</button>
+                        <button type="submit" class="form-btn form-btn-primary">注册</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录模态框 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🔐 用户登录</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">邮箱</label>
+                        <input type="email" id="loginEmail" name="email" placeholder="请输入邮箱" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <input type="password" id="loginPassword" name="password" placeholder="请输入密码" required minlength="6">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="form-btn form-btn-secondary" id="closeLoginModal">取消</button>
+                        <button type="submit" class="form-btn form-btn-primary">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上传资料模态框 -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📤 上传学习资料</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label for="uploadTitle">资料标题</label>
+                        <input type="text" id="uploadTitle" name="title" placeholder="请输入资料标题" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="uploadCategory">分类</label>
+                        <select id="uploadCategory" name="category" required>
+                            <option value="">请选择分类</option>
+                            <option value="编程开发">编程开发</option>
+                            <option value="数据分析">数据分析</option>
+                            <option value="设计创意">设计创意</option>
+                            <option value="语言学习">语言学习</option>
+                            <option value="市场营销">市场营销</option>
+                            <option value="教育教学">教育教学</option>
+                            <option value="人工智能">人工智能</option>
+                            <option value="网络安全">网络安全</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="uploadDescription">资料描述</label>
+                        <textarea id="uploadDescription" name="description" placeholder="请输入资料描述" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="uploadFile">上传文件</label>
+                        <input type="file" id="uploadFile" name="file" required multiple accept=".pdf,.doc,.docx,.zip,.rar,.mp4,.mp3">
+                        <small style="display: block; margin-top: 0.5rem; color: #666; font-size: 0.85rem;">
+                            支持格式：PDF, DOC, DOCX, ZIP, RAR, MP4, MP3
+                        </small>
+                        <div id="filePreview" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 1rem;"></div>
+                        <div id="uploadProgress" style="margin-top: 1rem; display: none;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>上传进度：</span>
+                                <span id="progressPercent">0%</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden;">
+                                <div id="progressBar" style="height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 0%; transition: width 0.3s ease;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="uploadTags">标签（用逗号分隔）</label>
+                        <input type="text" id="uploadTags" name="tags" placeholder="例如：Python,编程,入门">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="form-btn form-btn-secondary" id="closeUploadModal">取消</button>
+                        <button type="submit" class="form-btn form-btn-primary">上传</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop">↑</button>
+
     <script>
-        // 搜索功能
-        document.querySelectorAll('.search-container button').forEach(button => {
-            button.addEventListener('click', function() {
-                const input = this.previousElementSibling;
-                const query = input.value.trim();
-                if (query) {
-                    alert(`搜索关键词：${query}`);
-                    // 这里可以添加实际的搜索逻辑
+        // 页面加载动画
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                }, index * 100);
+            });
+            
+            // 初始化结果计数
+            const totalCards = document.querySelectorAll('.resource-card').length;
+            document.getElementById('resultCount').textContent = totalCards;
+        });
+
+        // 模态框功能
+        const modals = {
+            register: document.getElementById('registerModal'),
+            login: document.getElementById('loginModal'),
+            upload: document.getElementById('uploadModal')
+        };
+
+        const modalTriggers = {
+            register: document.getElementById('registerBtn'),
+            login: document.getElementById('loginBtn'),
+            upload: document.getElementById('uploadBtn')
+        };
+
+        const modalClosers = {
+            register: document.querySelectorAll('#registerModal .close, #closeRegisterModal'),
+            login: document.querySelectorAll('#loginModal .close, #closeLoginModal'),
+            upload: document.querySelectorAll('#uploadModal .close, #closeUploadModal')
+        };
+
+        // 打开模态框
+        Object.keys(modalTriggers).forEach(key => {
+            modalTriggers[key].addEventListener('click', function() {
+                modals[key].style.display = 'block';
+            });
+        });
+
+        // 关闭模态框
+        Object.keys(modalClosers).forEach(key => {
+            modalClosers[key].forEach(closer => {
+                closer.addEventListener('click', function() {
+                    modals[key].style.display = 'none';
+                });
+            });
+        });
+
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(e) {
+            Object.values(modals).forEach(modal => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
                 }
             });
         });
 
+        // 注册表单提交
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+            
+            if (password !== confirmPassword) {
+                alert('两次输入的密码不一致');
+                return;
+            }
+            
+            // 模拟注册成功
+            alert('注册成功！欢迎加入学习资料分享平台');
+            modals.register.style.display = 'none';
+            this.reset();
+        });
+
+        // 登录表单提交
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            // 模拟登录成功
+            alert('登录成功！');
+            modals.login.style.display = 'none';
+            this.reset();
+        });
+
+        // 文件预览功能
+        const uploadFileInput = document.getElementById('uploadFile');
+        const filePreview = document.getElementById('filePreview');
+
+        uploadFileInput.addEventListener('change', function() {
+            filePreview.innerHTML = '';
+            const files = this.files;
+            
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const fileItem = document.createElement('div');
+                fileItem.style.display = 'flex';
+                fileItem.style.alignItems = 'center';
+                fileItem.style.gap = '0.5rem';
+                fileItem.style.padding = '0.5rem';
+                fileItem.style.backgroundColor = '#f0f0f0';
+                fileItem.style.borderRadius = '8px';
+                fileItem.style.width = '100%';
+                
+                // 文件图标
+                const fileIcon = document.createElement('span');
+                const fileExtension = file.name.split('.').pop().toLowerCase();
+                if (['pdf'].includes(fileExtension)) {
+                    fileIcon.textContent = '📄';
+                } else if (['doc', 'docx'].includes(fileExtension)) {
+                    fileIcon.textContent = '📝';
+                } else if (['zip', 'rar'].includes(fileExtension)) {
+                    fileIcon.textContent = '📦';
+                } else if (['mp4', 'mp3'].includes(fileExtension)) {
+                    fileIcon.textContent = '🎬';
+                } else {
+                    fileIcon.textContent = '📁';
+                }
+                fileIcon.style.fontSize = '1.5rem';
+                
+                // 文件信息
+                const fileInfo = document.createElement('div');
+                fileInfo.style.flex = '1';
+                fileInfo.innerHTML = `
+                    <div style="font-weight: 500; font-size: 0.9rem;">${file.name}</div>
+                    <div style="font-size: 0.8rem; color: #666;">${(file.size / (1024 * 1024)).toFixed(2)} MB</div>
+                `;
+                
+                fileItem.appendChild(fileIcon);
+                fileItem.appendChild(fileInfo);
+                filePreview.appendChild(fileItem);
+            }
+        });
+
+        // 上传表单提交
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            // 显示进度条
+            const progressContainer = document.getElementById('uploadProgress');
+            const progressBar = document.getElementById('progressBar');
+            const progressPercent = document.getElementById('progressPercent');
+            progressContainer.style.display = 'block';
+            
+            // 模拟上传进度
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    // 模拟上传成功后的延迟
+                    setTimeout(() => {
+                        // 显示成功通知
+                        showNotification('资料上传成功！审核通过后将在平台展示', 'success');
+                        modals.upload.style.display = 'none';
+                        this.reset();
+                        filePreview.innerHTML = '';
+                        progressContainer.style.display = 'none';
+                        progressBar.style.width = '0%';
+                        progressPercent.textContent = '0%';
+                    }, 500);
+                }
+                progressBar.style.width = `${progress}%`;
+                progressPercent.textContent = `${Math.round(progress)}%`;
+            }, 200);
+        });
+
+        // 回到顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 通知系统功能
+        const notificationsContainer = document.createElement('div');
+        notificationsContainer.id = 'notifications';
+        document.body.appendChild(notificationsContainer);
+
+        function showNotification(message, type = 'info', duration = 3000) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            
+            // 通知图标
+            const icon = document.createElement('span');
+            icon.className = 'notification-icon';
+            switch (type) {
+                case 'success':
+                    icon.textContent = '✅';
+                    break;
+                case 'error':
+                    icon.textContent = '❌';
+                    break;
+                case 'warning':
+                    icon.textContent = '⚠️';
+                    break;
+                default:
+                    icon.textContent = 'ℹ️';
+            }
+            
+            // 通知内容
+            const content = document.createElement('div');
+            content.className = 'notification-content';
+            content.innerHTML = `
+                <div class="notification-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                <div class="notification-message">${message}</div>
+            `;
+            
+            // 关闭按钮
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'notification-close';
+            closeBtn.textContent = '×';
+            closeBtn.addEventListener('click', () => {
+                removeNotification(notification);
+            });
+            
+            notification.appendChild(icon);
+            notification.appendChild(content);
+            notification.appendChild(closeBtn);
+            notificationsContainer.appendChild(notification);
+            
+            // 自动关闭
+            setTimeout(() => {
+                removeNotification(notification);
+            }, duration);
+        }
+        
+        function removeNotification(notification) {
+            notification.style.animation = 'slideInRight 0.3s ease reverse';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }
+        
+        // 更新注册和登录表单的通知
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+            
+            if (password !== confirmPassword) {
+                showNotification('两次输入的密码不一致', 'error');
+                return;
+            }
+            
+            // 模拟注册成功
+            showNotification('注册成功！欢迎加入学习资料分享平台', 'success');
+            modals.register.style.display = 'none';
+            this.reset();
+        });
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            // 模拟登录成功
+            showNotification('登录成功！', 'success');
+            modals.login.style.display = 'none';
+            this.reset();
+        });
+
+        // 搜索建议数据源
+        const searchSuggestionsData = [
+            'Python从入门到精通',
+            '数据分析实战指南',
+            '机器学习基础教程',
+            '英语语法大全',
+            '高效学习方法',
+            '算法与数据结构',
+            'Python',
+            '数据分析',
+            '机器学习',
+            '英语学习',
+            '算法',
+            '编程开发',
+            '设计创意',
+            '市场营销',
+            '教育教学',
+            '人工智能',
+            '网络安全'
+        ];
+
+        // 创建搜索建议元素
+        function createSearchSuggestions() {
+            const searchContainers = document.querySelectorAll('.search-container, .hero-search');
+            searchContainers.forEach(container => {
+                const suggestions = document.createElement('div');
+                suggestions.className = 'search-suggestions';
+                suggestions.style.display = 'none';
+                container.appendChild(suggestions);
+            });
+        }
+
+        // 显示搜索建议
+        function showSearchSuggestions(input, suggestionsList) {
+            const query = input.value.toLowerCase().trim();
+            if (query.length < 1) {
+                suggestionsList.style.display = 'none';
+                return;
+            }
+
+            const filteredSuggestions = searchSuggestionsData.filter(item => 
+                item.toLowerCase().includes(query)
+            );
+
+            if (filteredSuggestions.length > 0) {
+                suggestionsList.innerHTML = filteredSuggestions.map(suggestion => 
+                    `<div class="search-suggestion-item">${suggestion}</div>`
+                ).join('');
+                suggestionsList.style.display = 'block';
+            } else {
+                suggestionsList.style.display = 'none';
+            }
+        }
+
+        // 搜索功能 - 过滤资料卡片
+        function performSearch(query) {
+            const allCards = document.querySelectorAll('.resource-card');
+            let visibleCount = 0;
+
+            allCards.forEach(card => {
+                const title = card.querySelector('.resource-title').textContent.toLowerCase();
+                const description = card.querySelector('.resource-description').textContent.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                const category = card.querySelector('.resource-category').textContent.toLowerCase();
+
+                const searchTerm = query.toLowerCase();
+                const isMatch = title.includes(searchTerm) || 
+                               description.includes(searchTerm) || 
+                               tags.some(tag => tag.includes(searchTerm)) ||
+                               category.includes(searchTerm);
+
+                if (isMatch) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // 更新结果计数
+            document.getElementById('resultCount').textContent = visibleCount;
+        }
+
+        // 初始化搜索建议功能
+        function initSearchSuggestions() {
+            createSearchSuggestions();
+
+            // 搜索框输入事件
+            document.querySelectorAll('.search-container input, .hero-search input').forEach(input => {
+                input.addEventListener('input', function() {
+                    const suggestions = this.parentElement.querySelector('.search-suggestions');
+                    showSearchSuggestions(this, suggestions);
+                });
+
+                // 点击搜索建议项
+                input.parentElement.querySelector('.search-suggestions').addEventListener('click', function(e) {
+                    if (e.target.classList.contains('search-suggestion-item')) {
+                        input.value = e.target.textContent;
+                        performSearch(input.value);
+                        this.style.display = 'none';
+                    }
+                });
+            });
+
+            // 点击页面其他地方关闭搜索建议
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container') && !e.target.closest('.hero-search')) {
+                    document.querySelectorAll('.search-suggestions').forEach(suggestions => {
+                        suggestions.style.display = 'none';
+                    });
+                }
+            });
+        }
+
+        // 搜索按钮事件
+        document.querySelectorAll('.search-container button').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const query = input.value.trim();
+                performSearch(query);
+                // 关闭搜索建议
+                input.parentElement.querySelector('.search-suggestions').style.display = 'none';
+            });
+        });
+
         // 回车搜索
-        document.querySelectorAll('.search-container input').forEach(input => {
+        document.querySelectorAll('.search-container input, .hero-search input').forEach(input => {
             input.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
-                    const button = this.nextElementSibling;
+                    let button;
+                    if (this.parentElement.classList.contains('hero-search')) {
+                        button = this.nextElementSibling;
+                    } else {
+                        button = this.nextElementSibling;
+                    }
                     button.click();
+                    // 关闭搜索建议
+                    this.parentElement.querySelector('.search-suggestions').style.display = 'none';
                 }
             });
         });
@@ -1005,19 +1926,15 @@
         const heroSearchInput = document.querySelector('.hero-search input');
         heroSearchButton.addEventListener('click', function() {
             const query = heroSearchInput.value.trim();
-            if (query) {
-                alert(`搜索关键词：${query}`);
-                // 这里可以添加实际的搜索逻辑
-            }
+            performSearch(query);
+            // 关闭搜索建议
+            heroSearchInput.parentElement.querySelector('.search-suggestions').style.display = 'none';
         });
 
-        heroSearchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                heroSearchButton.click();
-            }
-        });
+        // 页面加载时初始化搜索建议
+        window.addEventListener('load', initSearchSuggestions);
 
-        // 资料卡片点击事件
+        // 资料卡片下载按钮
         document.querySelectorAll('.resource-button').forEach(button => {
             button.addEventListener('click', function() {
                 const card = this.closest('.resource-card');
@@ -1027,45 +1944,196 @@
             });
         });
 
+        // 分类筛选功能
+        function filterByCategory(category) {
+            const allCards = document.querySelectorAll('.resource-card');
+            let visibleCount = 0;
+
+            allCards.forEach(card => {
+                const cardCategory = card.querySelector('.resource-category').textContent;
+                if (category === '全部' || cardCategory === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // 更新结果计数
+            document.getElementById('resultCount').textContent = visibleCount;
+        }
+
         // 分类卡片点击事件
         document.querySelectorAll('.category-card').forEach(card => {
             card.addEventListener('click', function() {
                 const category = this.querySelector('h3').textContent;
-                alert(`浏览分类：${category}`);
-                // 这里可以添加实际的分类浏览逻辑
+                filterByCategory(category);
             });
         });
 
-        // 加载更多按钮
-        document.querySelectorAll('.load-more').forEach(button => {
-            button.addEventListener('click', function() {
-                this.textContent = '加载中...';
-                setTimeout(() => {
-                    this.textContent = '加载更多';
-                    alert('已加载更多资料');
-                    // 这里可以添加实际的加载更多逻辑
-                }, 1500);
+        // 标签筛选功能
+        function filterByTag(tag) {
+            const allCards = document.querySelectorAll('.resource-card');
+            let visibleCount = 0;
+
+            allCards.forEach(card => {
+                const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent);
+                if (tags.includes(tag)) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // 更新结果计数
+            document.getElementById('resultCount').textContent = visibleCount;
+        }
+
+        // 标签点击事件
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', function(e) {
+                e.stopPropagation(); // 防止触发卡片点击
+                const tagText = this.textContent;
+                filterByTag(tagText);
             });
         });
 
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // 排序功能
+        document.getElementById('sortSelect').addEventListener('change', function() {
+            const sortBy = this.value;
+            const resourcesGrids = document.querySelectorAll('.resources-grid');
+            
+            resourcesGrids.forEach(resourcesGrid => {
+                const allCards = Array.from(resourcesGrid.querySelectorAll('.resource-card'));
+
+                if (sortBy === 'default') {
+                    // 恢复默认顺序
+                    allCards.forEach(card => {
+                        resourcesGrid.appendChild(card);
+                    });
+                    return;
+                }
+
+                // 排序逻辑
+                allCards.sort((a, b) => {
+                    let aVal, bVal;
+
+                    switch(sortBy) {
+                        case 'downloads':
+                            aVal = parseInt(a.querySelector('.stat-item:nth-child(1)').textContent.replace('📥 下载：', ''));
+                            bVal = parseInt(b.querySelector('.stat-item:nth-child(1)').textContent.replace('📥 下载：', ''));
+                            break;
+                        case 'rating':
+                            aVal = parseFloat(a.querySelector('.stat-item:nth-child(2)').textContent.replace('⭐ 评分：', ''));
+                            bVal = parseFloat(b.querySelector('.stat-item:nth-child(2)').textContent.replace('⭐ 评分：', ''));
+                            break;
+                        case 'date':
+                            aVal = new Date(a.querySelector('.resource-meta span:nth-child(1)').textContent.replace('📅 ', ''));
+                            bVal = new Date(b.querySelector('.resource-meta span:nth-child(1)').textContent.replace('📅 ', ''));
+                            break;
+                    }
+
+                    return bVal - aVal; // 降序排序
+                });
+
+                // 重新排列卡片
+                allCards.forEach(card => {
+                    resourcesGrid.appendChild(card);
                 });
             });
         });
 
-        // 页面加载动画
-        window.addEventListener('load', function() {
-            const elements = document.querySelectorAll('.fade-in-up');
-            elements.forEach((element, index) => {
-                element.style.opacity = '0';
+        // 深色模式切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        let isDarkMode = false;
+
+        // 检查系统主题偏好
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            isDarkMode = true;
+        }
+
+        // 初始化主题
+        function initTheme() {
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️ 切换到浅色模式';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggle.textContent = '🌓 切换到深色模式';
+            }
+        }
+
+        // 切换主题
+        themeToggle.addEventListener('click', function() {
+            isDarkMode = !isDarkMode;
+            initTheme();
+        });
+
+        // 页面加载时初始化主题
+        window.addEventListener('load', initTheme);
+
+        // 移除logo函数
+        function removeLogo() {
+            const logoElement = document.querySelector('.logo');
+            if (logoElement) {
+                logoElement.style.display = 'none';
+                console.log('Logo已移除');
+            }
+        }
+
+        // 页面加载时移除logo
+        window.addEventListener('load', removeLogo);
+
+        // 加载更多功能
+        document.querySelectorAll('.load-more').forEach(button => {
+            button.addEventListener('click', function() {
+                this.textContent = '加载中...';
+                this.disabled = true;
+
                 setTimeout(() => {
-                    element.style.opacity = '1';
-                }, index * 100);
+                    // 模拟加载更多数据
+                    const resourcesGrid = this.previousElementSibling;
+                    
+                    // 创建新的示例卡片
+                    const newCard = document.createElement('div');
+                    newCard.className = 'resource-card fade-in-up';
+                    newCard.innerHTML = `
+                        <div class="resource-image">📖</div>
+                        <div class="resource-content">
+                            <span class="resource-category">编程开发</span>
+                            <h3 class="resource-title">新添加的学习资料</h3>
+                            <p class="resource-description">这是通过"加载更多"功能动态添加的学习资料示例，展示了网站的交互功能。</p>
+                            <div class="resource-meta">
+                                <span>📅 2024-01-19</span>
+                                <span>👤 分享者：系统</span>
+                            </div>
+                            <div class="resource-stats">
+                                <span class="stat-item">📥 下载：123</span>
+                                <span class="stat-item">⭐ 评分：4.5</span>
+                                <span class="stat-item">💬 评论：12</span>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">示例</span>
+                                <span class="tag">动态加载</span>
+                            </div>
+                            <button class="resource-button">免费下载</button>
+                        </div>
+                    `;
+
+                    // 添加到网格
+                    resourcesGrid.appendChild(newCard);
+
+                    // 更新结果计数
+                    const totalCards = document.querySelectorAll('.resource-card').length;
+                    document.getElementById('resultCount').textContent = totalCards;
+
+                    // 重置按钮
+                    this.textContent = '加载更多';
+                    this.disabled = false;
+                }, 1500);
             });
         });
     </script>
