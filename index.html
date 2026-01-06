@@ -48,6 +48,14 @@
             color: white;
         }
 
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 1001;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
@@ -92,6 +100,119 @@
 
         .upload-btn {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        /* 消息徽章样式 */
+        .message-badge {
+            background: #f5576c;
+            color: white;
+            border-radius: 50%;
+            padding: 0.1rem 0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.3rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* 消息模态框样式 */
+        .messages-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .message-item {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .message-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-item.unread {
+            background: #e3f2fd;
+            border-left-color: #2196F3;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .message-sender {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .message-date {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .message-content {
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .message-action-btn {
+            background: #f0f0f0;
+            color: #666;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .message-action-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 深色模式下的消息样式 */
+        body.dark-mode .message-item {
+            background: #16213e;
+        }
+
+        body.dark-mode .message-item.unread {
+            background: #0f3460;
+        }
+
+        body.dark-mode .message-sender {
+            color: #8a94e8;
+        }
+
+        body.dark-mode .message-date {
+            color: #777;
+        }
+
+        body.dark-mode .message-content {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .message-action-btn {
+            background: #0f3460;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .message-action-btn:hover {
+            background: #667eea;
             color: white;
         }
 
@@ -232,6 +353,15 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
+        .hero-search .advanced-search-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        .hero-search .advanced-search-btn:hover {
+            background: #764ba2;
+        }
+
         /* 主要内容区域 */
         main {
             padding: 2rem 0;
@@ -284,6 +414,17 @@
             border-color: #667eea;
         }
 
+        .category-card.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .category-card.active:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
         .category-card i {
             font-size: 2.5rem;
             color: #667eea;
@@ -294,6 +435,14 @@
             font-size: 1.1rem;
             font-weight: 600;
             color: #333;
+        }
+
+        .category-card.active i {
+            color: white;
+        }
+
+        .category-card.active h3 {
+            color: white;
         }
 
         /* 资料卡片样式 */
@@ -424,6 +573,220 @@
         .tag:hover {
             background: #667eea;
             color: white;
+        }
+
+        .tag.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 收藏和关注功能样式 */
+        .resource-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .action-btn {
+            background: #f0f0f0;
+            color: #666;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .action-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .action-btn.followed,
+        .action-btn.favorited {
+            background: #667eea;
+            color: white;
+        }
+
+        .action-btn.followed::before {
+            content: '✅ ';
+        }
+
+        .action-btn.favorited::before {
+            content: '❤️ ';
+        }
+
+        /* 深色模式下的收藏和关注按钮样式 */
+        body.dark-mode .action-btn {
+            background: #0f3460;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .action-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        body.dark-mode .action-btn.followed,
+        body.dark-mode .action-btn.favorited {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 评分样式 */
+        .rating-section {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 0.2rem;
+            cursor: pointer;
+        }
+
+        .star {
+            font-size: 1.2rem;
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .star.filled {
+            color: #ffd700;
+        }
+
+        .star:hover {
+            color: #ffd700;
+            transform: scale(1.2);
+        }
+
+        .rating-text {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        /* 评论样式 */
+        .comments-section {
+            margin: 1rem 0;
+        }
+
+        .comment-btn {
+            background: #f0f0f0;
+            color: #666;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .comment-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .comment-form {
+            margin-top: 1rem;
+        }
+
+        .comment-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-submit {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .comment-submit:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .comments-list {
+            margin-top: 1rem;
+        }
+
+        .comment-item {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .comment-content {
+            margin-bottom: 0.3rem;
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* 深色模式下的评分和评论样式 */
+        body.dark-mode .rating-section .star {
+            color: #555;
+        }
+
+        body.dark-mode .rating-section .star.filled {
+            color: #ffd700;
+        }
+
+        body.dark-mode .comment-btn {
+            background: #0f3460;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .comment-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        body.dark-mode .comment-textarea {
+            background: #16213e;
+            border-color: #0f3460;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .comment-item {
+            background: #16213e;
+        }
+
+        body.dark-mode .comment-author {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .comment-content {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .comment-date {
+            color: #777;
         }
 
         /* 热门、最新、推荐区域 */
@@ -1081,9 +1444,13 @@
                     <li><a href="#">分类浏览</a></li>
                     <li><a href="#">热门资料</a></li>
                     <li><a href="#">最新上传</a></li>
+                    <li><a href="#" id="rankingBtn">🏆 排行榜</a></li>
+                    <li><a href="#" id="learningPathBtn">🎯 学习路径</a></li>
                 </ul>
                 <div class="user-actions">
                     <button class="user-btn" id="themeToggle">🌓 切换主题</button>
+                    <button class="user-btn" id="messagesBtn">💬 消息 <span class="message-badge" id="messageBadge">0</span></button>
+                    <button class="user-btn" id="profileBtn">👤 个人资料</button>
                     <button class="user-btn" id="loginBtn">登录</button>
                     <button class="user-btn" id="registerBtn">注册</button>
                     <button class="user-btn upload-btn" id="uploadBtn">📤 上传资料</button>
@@ -1100,6 +1467,7 @@
             <div class="hero-search">
                 <input type="text" placeholder="搜索你需要的学习资料...">
                 <button>🔍 搜索</button>
+                <button class="advanced-search-btn" id="advancedSearchBtn">⚙️ 高级搜索</button>
             </div>
         </div>
     </section>
@@ -1127,6 +1495,10 @@
             <section class="categories">
                 <h2 class="section-title">浏览分类</h2>
                 <div class="categories-grid">
+                    <div class="category-card active">
+                        <i>🏠</i>
+                        <h3>全部</h3>
+                    </div>
                     <div class="category-card">
                         <i>💻</i>
                         <h3>编程开发</h3>
@@ -1182,12 +1554,19 @@
                                 <span class="stat-item">⭐ 评分：4.8</span>
                                 <span class="stat-item">💬 评论：89</span>
                             </div>
+                            <div class="resource-actions">
+                                <button class="action-btn favorite-btn" data-resource-id="1">❤️ 收藏</button>
+                                <button class="action-btn follow-btn" data-user="编程达人">👥 关注作者</button>
+                            </div>
                             <div class="tags">
                                 <span class="tag">Python</span>
                                 <span class="tag">编程</span>
                                 <span class="tag">入门</span>
                             </div>
-                            <button class="resource-button">免费下载</button>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                <button class="resource-button preview-btn" data-resource-id="1">👁️ 预览</button>
+                                <button class="resource-button" data-resource-id="1">免费下载</button>
+                            </div>
                         </div>
                     </div>
 
@@ -1207,12 +1586,19 @@
                                 <span class="stat-item">⭐ 评分：4.7</span>
                                 <span class="stat-item">💬 评论：67</span>
                             </div>
+                            <div class="resource-actions">
+                                <button class="action-btn favorite-btn" data-resource-id="2">❤️ 收藏</button>
+                                <button class="action-btn follow-btn" data-user="数据分析师">👥 关注作者</button>
+                            </div>
                             <div class="tags">
                                 <span class="tag">数据分析</span>
                                 <span class="tag">Pandas</span>
                                 <span class="tag">可视化</span>
                             </div>
-                            <button class="resource-button">免费下载</button>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                <button class="resource-button preview-btn" data-resource-id="2">👁️ 预览</button>
+                                <button class="resource-button" data-resource-id="2">免费下载</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1239,12 +1625,19 @@
                                 <span class="stat-item">⭐ 评分：4.8</span>
                                 <span class="stat-item">💬 评论：34</span>
                             </div>
+                            <div class="resource-actions">
+                                <button class="action-btn favorite-btn" data-resource-id="3">❤️ 收藏</button>
+                                <button class="action-btn follow-btn" data-user="AI研究者">👥 关注作者</button>
+                            </div>
                             <div class="tags">
                                 <span class="tag">机器学习</span>
                                 <span class="tag">AI</span>
                                 <span class="tag">Python</span>
                             </div>
-                            <button class="resource-button">免费下载</button>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                <button class="resource-button preview-btn" data-resource-id="3">👁️ 预览</button>
+                                <button class="resource-button" data-resource-id="3">免费下载</button>
+                            </div>
                         </div>
                     </div>
 
@@ -1264,12 +1657,19 @@
                                 <span class="stat-item">⭐ 评分：4.7</span>
                                 <span class="stat-item">💬 评论：45</span>
                             </div>
+                            <div class="resource-actions">
+                                <button class="action-btn favorite-btn" data-resource-id="4">❤️ 收藏</button>
+                                <button class="action-btn follow-btn" data-user="英语老师">👥 关注作者</button>
+                            </div>
                             <div class="tags">
                                 <span class="tag">英语学习</span>
                                 <span class="tag">语法</span>
                                 <span class="tag">零基础</span>
                             </div>
-                            <button class="resource-button">免费下载</button>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                <button class="resource-button preview-btn" data-resource-id="4">👁️ 预览</button>
+                                <button class="resource-button" data-resource-id="4">免费下载</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1296,12 +1696,19 @@
                                 <span class="stat-item">⭐ 评分：4.9</span>
                                 <span class="stat-item">💬 评论：67</span>
                             </div>
+                            <div class="resource-actions">
+                                <button class="action-btn favorite-btn" data-resource-id="5">❤️ 收藏</button>
+                                <button class="action-btn follow-btn" data-user="教育专家">👥 关注作者</button>
+                            </div>
                             <div class="tags">
                                 <span class="tag">学习方法</span>
                                 <span class="tag">高效学习</span>
                                 <span class="tag">记忆技巧</span>
                             </div>
-                            <button class="resource-button">免费下载</button>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                <button class="resource-button preview-btn" data-resource-id="5">👁️ 预览</button>
+                                <button class="resource-button" data-resource-id="5">免费下载</button>
+                            </div>
                         </div>
                     </div>
 
@@ -1321,12 +1728,19 @@
                                 <span class="stat-item">⭐ 评分：4.8</span>
                                 <span class="stat-item">💬 评论：92</span>
                             </div>
+                            <div class="resource-actions">
+                                <button class="action-btn favorite-btn" data-resource-id="6">❤️ 收藏</button>
+                                <button class="action-btn follow-btn" data-user="算法大师">👥 关注作者</button>
+                            </div>
                             <div class="tags">
                                 <span class="tag">算法</span>
                                 <span class="tag">数据结构</span>
                                 <span class="tag">编程</span>
                             </div>
-                            <button class="resource-button">免费下载</button>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                <button class="resource-button preview-btn" data-resource-id="6">👁️ 预览</button>
+                                <button class="resource-button" data-resource-id="6">免费下载</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1493,6 +1907,375 @@
         </div>
     </div>
 
+    <!-- 个人资料模态框 -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>👤 个人资料管理</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="profileContent">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" id="profileUsername" placeholder="请输入用户名" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>邮箱</label>
+                        <input type="email" id="profileEmail" placeholder="请输入邮箱" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>注册时间</label>
+                        <input type="text" id="profileCreatedAt" placeholder="注册时间" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>个人简介</label>
+                        <textarea id="profileBio" placeholder="请输入个人简介"></textarea>
+                    </div>
+                    <div class="form-actions" style="margin-top: 1rem;">
+                        <button type="button" class="form-btn form-btn-secondary" id="closeProfileModal">关闭</button>
+                        <button type="button" class="form-btn form-btn-primary" id="updateProfileBtn">更新资料</button>
+                    </div>
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e0e0e0;">
+                        <h3 style="margin-bottom: 1rem;">📋 历史记录</h3>
+                        <div style="display: flex; gap: 1rem;">
+                            <button type="button" class="form-btn form-btn-secondary" id="viewDownloadHistoryBtn">📥 下载历史</button>
+                            <button type="button" class="form-btn form-btn-secondary" id="viewUploadHistoryBtn">📤 上传历史</button>
+                            <button type="button" class="form-btn form-btn-secondary" onclick="viewReportHistory()">🚫 举报记录</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息模态框 -->
+    <div id="messagesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💬 消息中心</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="messages-container" id="messagesContainer">
+                    <!-- 消息列表将通过JavaScript动态添加 -->
+                </div>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="button" class="form-btn form-btn-secondary" id="closeMessagesModal">关闭</button>
+                    <button type="button" class="form-btn form-btn-primary" id="markAllReadBtn">标记全部已读</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 高级搜索模态框 -->
+    <div id="advancedSearchModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🔍 高级搜索</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="advancedSearchForm">
+                    <div class="form-group">
+                        <label for="advancedSearchQuery">关键词</label>
+                        <input type="text" id="advancedSearchQuery" placeholder="输入搜索关键词">
+                    </div>
+                    <div class="form-group">
+                        <label for="advancedSearchCategory">分类</label>
+                        <select id="advancedSearchCategory">
+                            <option value="">全部分类</option>
+                            <option value="编程开发">编程开发</option>
+                            <option value="数据分析">数据分析</option>
+                            <option value="设计创意">设计创意</option>
+                            <option value="语言学习">语言学习</option>
+                            <option value="市场营销">市场营销</option>
+                            <option value="教育教学">教育教学</option>
+                            <option value="人工智能">人工智能</option>
+                            <option value="网络安全">网络安全</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="advancedSearchTag">标签</label>
+                        <input type="text" id="advancedSearchTag" placeholder="输入标签名称">
+                    </div>
+                    <div class="form-group">
+                        <label>日期范围</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="date" id="dateFrom">
+                            <input type="date" id="dateTo">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="advancedSearchRating">最低评分</label>
+                        <select id="advancedSearchRating">
+                            <option value="0">不限</option>
+                            <option value="1">1星及以上</option>
+                            <option value="2">2星及以上</option>
+                            <option value="3">3星及以上</option>
+                            <option value="4">4星及以上</option>
+                            <option value="4.5">4.5星及以上</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="advancedSearchDownloads">最低下载量</label>
+                        <select id="advancedSearchDownloads">
+                            <option value="0">不限</option>
+                            <option value="10">10次及以上</option>
+                            <option value="50">50次及以上</option>
+                            <option value="100">100次及以上</option>
+                            <option value="500">500次及以上</option>
+                            <option value="1000">1000次及以上</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="form-btn form-btn-secondary" id="closeAdvancedSearchModal">取消</button>
+                        <button type="submit" class="form-btn form-btn-primary">执行搜索</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 预览模态框 -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h2 id="previewTitle">👁️ 资料预览</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="previewContent" style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
+                    <!-- 预览内容将通过JavaScript动态添加 -->
+                </div>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="button" class="form-btn form-btn-secondary" id="closePreviewModal">关闭</button>
+                    <button type="button" class="form-btn form-btn-primary" id="downloadFromPreviewBtn">下载资料</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 下载历史记录模态框 -->
+    <div id="downloadHistoryModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2>📥 下载历史记录</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="downloadHistoryContent" style="min-height: 400px;">
+                    <!-- 下载历史记录将通过JavaScript动态添加 -->
+                </div>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="button" class="form-btn form-btn-secondary" id="closeDownloadHistoryModal">关闭</button>
+                    <button type="button" class="form-btn form-btn-primary" id="clearDownloadHistoryBtn">清空历史</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上传历史记录模态框 -->
+    <div id="uploadHistoryModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2>📤 上传历史记录</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="uploadHistoryContent" style="min-height: 400px;">
+                    <!-- 上传历史记录将通过JavaScript动态添加 -->
+                </div>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="button" class="form-btn form-btn-secondary" id="closeUploadHistoryModal">关闭</button>
+                    <button type="button" class="form-btn form-btn-primary" id="clearUploadHistoryBtn">清空历史</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 举报模态框 -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🚫 举报资料</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <input type="hidden" id="reportResourceId" value="">
+                    <div class="form-group">
+                        <label for="reportReason">举报原因</label>
+                        <select id="reportReason" class="form-control" required>
+                            <option value="">请选择举报原因</option>
+                            <option value="spam">垃圾信息</option>
+                            <option value="inappropriate">不当内容</option>
+                            <option value="copyright">版权侵犯</option>
+                            <option value="duplicate">重复资料</option>
+                            <option value="other">其他原因</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reportDescription">详细描述</label>
+                        <textarea id="reportDescription" class="form-control" rows="4" placeholder="请详细描述举报原因..." required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="form-btn form-btn-secondary" id="closeReportModal">取消</button>
+                        <button type="submit" class="form-btn form-btn-primary">提交举报</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 举报记录模态框 -->
+    <div id="reportHistoryModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2>📋 我的举报记录</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="reportHistoryContent" style="min-height: 400px;">
+                    <!-- 举报记录将通过JavaScript动态添加 -->
+                </div>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="button" class="form-btn form-btn-secondary" id="closeReportHistoryModal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分享模态框 -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📤 分享资料</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="shareContent">
+                    <div class="form-group">
+                        <label>资料信息</label>
+                        <div style="background: #f0f0f0; padding: 1rem; border-radius: 8px;">
+                            <h3 id="shareResourceTitle">资料标题</h3>
+                            <p id="shareResourceDescription">资料描述</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>分享方式</label>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                            <button class="form-btn form-btn-secondary" onclick="shareToSocial('weixin')">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💬</div>
+                                <div>微信</div>
+                            </button>
+                            <button class="form-btn form-btn-secondary" onclick="shareToSocial('weibo')">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📱</div>
+                                <div>微博</div>
+                            </button>
+                            <button class="form-btn form-btn-secondary" onclick="shareToSocial('qq')">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💻</div>
+                                <div>QQ</div>
+                            </button>
+                            <button class="form-btn form-btn-secondary" onclick="shareToSocial('linkedin')">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💼</div>
+                                <div>LinkedIn</div>
+                            </button>
+                            <button class="form-btn form-btn-secondary" onclick="shareToSocial('copy')">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📋</div>
+                                <div>复制链接</div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>分享链接</label>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="shareLink" class="form-control" readonly style="flex: 1;">
+                            <button class="form-btn form-btn-primary" onclick="copyShareLink()">复制</button>
+                        </div>
+                        <small style="display: block; margin-top: 0.5rem; color: #666;">复制链接后可以分享给好友</small>
+                    </div>
+                </div>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="button" class="form-btn form-btn-secondary" id="closeShareModal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 排行榜模态框 -->
+    <div id="rankingModal" class="modal">
+        <div class="modal-content" style="max-width: 1000px;">
+            <div class="modal-header">
+                <h2>🏆 排行榜</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <!-- 贡献榜 -->
+                    <div>
+                        <h3 style="margin-bottom: 1rem; display: flex; align-items: center;">
+                            <span style="font-size: 1.5rem; margin-right: 0.5rem;">👑</span>
+                            贡献榜
+                        </h3>
+                        <div id="contributionRanking" style="min-height: 300px;">
+                            <!-- 贡献榜内容将通过JavaScript动态添加 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 热门资料榜 -->
+                    <div>
+                        <h3 style="margin-bottom: 1rem; display: flex; align-items: center;">
+                            <span style="font-size: 1.5rem; margin-right: 0.5rem;">🔥</span>
+                            热门资料榜
+                        </h3>
+                        <div id="popularRanking" style="min-height: 300px;">
+                            <!-- 热门资料榜内容将通过JavaScript动态添加 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="button" class="form-btn form-btn-secondary" id="closeRankingModal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 学习路径模态框 -->
+    <div id="learningPathModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2>🎯 学习路径</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>选择学习领域</label>
+                    <select id="learningPathCategory" class="form-control" style="margin-top: 0.5rem;">
+                        <option value="">请选择学习领域</option>
+                        <option value="编程开发">编程开发</option>
+                        <option value="数据分析">数据分析</option>
+                        <option value="设计创意">设计创意</option>
+                        <option value="语言学习">语言学习</option>
+                        <option value="市场营销">市场营销</option>
+                        <option value="教育教学">教育教学</option>
+                        <option value="人工智能">人工智能</option>
+                        <option value="网络安全">网络安全</option>
+                    </select>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <button class="form-btn form-btn-primary" id="generatePathBtn">生成学习路径</button>
+                </div>
+                <div id="learningPathContent" style="margin-top: 2rem; min-height: 400px;">
+                    <!-- 学习路径内容将通过JavaScript动态添加 -->
+                </div>
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <button type="button" class="form-btn form-btn-secondary" id="closeLearningPathModal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 回到顶部按钮 -->
     <button id="backToTop">↑</button>
 
@@ -1516,24 +2299,85 @@
         const modals = {
             register: document.getElementById('registerModal'),
             login: document.getElementById('loginModal'),
-            upload: document.getElementById('uploadModal')
+            upload: document.getElementById('uploadModal'),
+            profile: document.getElementById('profileModal'),
+            messages: document.getElementById('messagesModal'),
+            advancedSearch: document.getElementById('advancedSearchModal'),
+            preview: document.getElementById('previewModal'),
+            downloadHistory: document.getElementById('downloadHistoryModal'),
+            uploadHistory: document.getElementById('uploadHistoryModal'),
+            report: document.getElementById('reportModal'),
+            reportHistory: document.getElementById('reportHistoryModal'),
+            share: document.getElementById('shareModal'),
+            ranking: document.getElementById('rankingModal'),
+            learningPath: document.getElementById('learningPathModal')
         };
 
         const modalTriggers = {
             register: document.getElementById('registerBtn'),
             login: document.getElementById('loginBtn'),
-            upload: document.getElementById('uploadBtn')
+            upload: document.getElementById('uploadBtn'),
+            profile: document.getElementById('profileBtn'),
+            messages: document.getElementById('messagesBtn'),
+            advancedSearch: document.getElementById('advancedSearchBtn'),
+            ranking: document.getElementById('rankingBtn'),
+            learningPath: document.getElementById('learningPathBtn')
         };
 
         const modalClosers = {
             register: document.querySelectorAll('#registerModal .close, #closeRegisterModal'),
             login: document.querySelectorAll('#loginModal .close, #closeLoginModal'),
-            upload: document.querySelectorAll('#uploadModal .close, #closeUploadModal')
+            upload: document.querySelectorAll('#uploadModal .close, #closeUploadModal'),
+            profile: document.querySelectorAll('#profileModal .close, #closeProfileModal'),
+            messages: document.querySelectorAll('#messagesModal .close, #closeMessagesModal'),
+            advancedSearch: document.querySelectorAll('#advancedSearchModal .close, #closeAdvancedSearchModal'),
+            preview: document.querySelectorAll('#previewModal .close, #closePreviewModal'),
+            downloadHistory: document.querySelectorAll('#downloadHistoryModal .close, #closeDownloadHistoryModal'),
+            uploadHistory: document.querySelectorAll('#uploadHistoryModal .close, #closeUploadHistoryModal'),
+            report: document.querySelectorAll('#reportModal .close, #closeReportModal'),
+            reportHistory: document.querySelectorAll('#reportHistoryModal .close, #closeReportHistoryModal'),
+            share: document.querySelectorAll('#shareModal .close, #closeShareModal'),
+            ranking: document.querySelectorAll('#rankingModal .close, #closeRankingModal')
         };
+
+        // 加载个人资料
+        function loadProfile() {
+            if (!currentUser) {
+                showNotification('请先登录后查看个人资料', 'warning');
+                return false;
+            }
+            
+            // 加载用户数据
+            document.getElementById('profileUsername').value = currentUser.username;
+            document.getElementById('profileEmail').value = currentUser.email;
+            document.getElementById('profileCreatedAt').value = new Date(currentUser.createdAt).toLocaleString();
+            document.getElementById('profileBio').value = currentUser.bio || '';
+            
+            return true;
+        }
 
         // 打开模态框
         Object.keys(modalTriggers).forEach(key => {
             modalTriggers[key].addEventListener('click', function() {
+                if (key === 'upload' && !currentUser) {
+                    showNotification('请先登录后再上传资料', 'warning');
+                    return;
+                }
+                if (key === 'profile') {
+                    if (!loadProfile()) {
+                        return;
+                    }
+                }
+                if (key === 'messages') {
+                    if (!currentUser) {
+                        showNotification('请先登录后查看消息', 'warning');
+                        return;
+                    }
+                    loadMessages();
+                }
+                if (key === 'ranking') {
+                    loadRanking();
+                }
                 modals[key].style.display = 'block';
             });
         });
@@ -1585,8 +2429,19 @@
             this.reset();
         });
 
+        // 从localStorage加载资源
+        function loadResources() {
+            const savedResources = localStorage.getItem('resources');
+            return savedResources ? JSON.parse(savedResources) : [];
+        }
+
+        // 保存资源到localStorage
+        function saveResources(resources) {
+            localStorage.setItem('resources', JSON.stringify(resources));
+        }
+
         // 资料存储数组
-        let resources = [];
+        let resources = loadResources();
 
         // 文件预览功能
         const uploadFileInput = document.getElementById('uploadFile');
@@ -1643,7 +2498,7 @@
             card.className = 'resource-card fade-in-up';
             
             // 文件图标
-            const fileExtension = resource.file.name.split('.').pop().toLowerCase();
+            const fileExtension = resource.fileName.split('.').pop().toLowerCase();
             let fileIcon = '📁';
             if (['pdf'].includes(fileExtension)) {
                 fileIcon = '📄';
@@ -1655,6 +2510,13 @@
                 fileIcon = '🎬';
             }
             
+            // 格式化文件大小
+            function formatFileSize(bytes) {
+                if (bytes < 1024) return bytes + ' B';
+                else if (bytes < (1024 * 1024)) return (bytes / 1024).toFixed(1) + ' KB';
+                else return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+            }
+            
             card.innerHTML = `
                 <div class="resource-image">${fileIcon}</div>
                 <div class="resource-content">
@@ -1664,22 +2526,82 @@
                     <div class="resource-meta">
                         <span>📅 ${resource.uploadDate}</span>
                         <span>👤 分享者：${resource.uploader}</span>
+                        <span>📎 ${formatFileSize(resource.fileSize)}</span>
                     </div>
                     <div class="resource-stats">
                         <span class="stat-item">📥 下载：${resource.downloads}</span>
                         <span class="stat-item">⭐ 评分：${resource.rating}</span>
                         <span class="stat-item">💬 评论：${resource.comments}</span>
                     </div>
+                    <div class="resource-actions">
+                        <button class="action-btn favorite-btn" data-resource-id="${resource.id}">❤️ 收藏</button>
+                        <button class="action-btn follow-btn" data-user="${resource.uploader}">👥 关注作者</button>
+                        <button class="action-btn share-btn" data-resource-id="${resource.id}">📤 分享</button>
+                        <button class="action-btn report-btn" data-resource-id="${resource.id}">🚫 举报</button>
+                    </div>
+                    <div class="rating-section">
+                        <div class="rating-stars">
+                            ${Array(5).fill().map((_, i) => `<span class="star ${i < Math.floor(resource.rating) ? 'filled' : ''}" data-rating="${i + 1}">★</span>`).join('')}
+                        </div>
+                        <span class="rating-text">${resource.rating.toFixed(1)}</span>
+                    </div>
+                    <div class="comments-section">
+                        <button class="comment-btn" data-resource-id="${resource.id}">查看评论</button>
+                        <div class="comment-form" style="margin-top: 1rem; display: none;">
+                            <textarea placeholder="写下你的评论..." class="comment-textarea"></textarea>
+                            <button class="comment-submit" data-resource-id="${resource.id}">提交评论</button>
+                        </div>
+                        <div class="comments-list" style="margin-top: 1rem; display: none;"></div>
+                    </div>
                     <div class="tags">
                         ${resource.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
-                    <button class="resource-button" data-resource-id="${resource.id}">免费下载</button>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="resource-button preview-btn" data-resource-id="${resource.id}">👁️ 预览</button>
+                        <button class="resource-button" data-resource-id="${resource.id}">免费下载</button>
+                    </div>
                 </div>
             `;
             
             // 添加下载事件
-            card.querySelector('.resource-button').addEventListener('click', function() {
-                downloadResource(resource);
+            card.querySelectorAll('.resource-button').forEach(button => {
+                if (!button.classList.contains('preview-btn')) {
+                    button.addEventListener('click', function() {
+                        downloadResource(resource);
+                    });
+                }
+            });
+            
+            // 添加预览事件
+            const previewBtn = card.querySelector('.preview-btn');
+            if (previewBtn) {
+                previewBtn.addEventListener('click', function() {
+                    previewResource(resource);
+                });
+            }
+            
+            // 添加收藏事件
+            const favoriteBtn = card.querySelector('.favorite-btn');
+            favoriteBtn.addEventListener('click', function() {
+                toggleFavorite(resource.id, this);
+            });
+            
+            // 添加关注事件
+            const followBtn = card.querySelector('.follow-btn');
+            followBtn.addEventListener('click', function() {
+                toggleFollow(resource.uploader, this);
+            });
+            
+            // 添加举报事件
+            const reportBtn = card.querySelector('.report-btn');
+            reportBtn.addEventListener('click', function() {
+                openReportModal(resource.id, resource.title);
+            });
+            
+            // 添加分享事件
+            const shareBtn = card.querySelector('.share-btn');
+            shareBtn.addEventListener('click', function() {
+                openShareModal(resource);
             });
             
             return card;
@@ -1688,12 +2610,22 @@
         // 下载资料
         function downloadResource(resource) {
             showNotification(`正在下载：${resource.title}`, 'info');
-            // 模拟下载成功
+            // 模拟下载过程
             setTimeout(() => {
                 showNotification(`下载完成：${resource.title}`, 'success');
                 // 更新下载次数
                 resource.downloads++;
                 updateResourceStats(resource);
+                // 保存资源到localStorage
+                saveResources(resources);
+                // 实际下载功能
+                // 这里可以添加实际的文件下载逻辑，例如创建下载链接
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(new Blob(['模拟文件内容'], { type: resource.fileType }));
+                downloadLink.download = resource.fileName;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
             }, 1500);
         }
 
@@ -1711,24 +2643,38 @@
 
         // 显示上传的资料
         function displayUploadedResources() {
-            const resourcesGrid = document.querySelector('.resources-grid');
-            if (!resourcesGrid) return;
+            // 获取所有资源网格
+            const resourcesGrids = document.querySelectorAll('.resources-grid');
+            if (resourcesGrids.length === 0) return;
             
-            // 清空现有资料
-            resourcesGrid.innerHTML = '';
+            // 清空所有资源网格
+            resourcesGrids.forEach(grid => {
+                grid.innerHTML = '';
+            });
             
-            // 添加所有资料卡片
+            // 添加所有资料卡片到第一个网格
+            const mainGrid = resourcesGrids[0];
             resources.forEach(resource => {
                 const card = createResourceCard(resource);
-                resourcesGrid.appendChild(card);
+                mainGrid.appendChild(card);
             });
             
             // 更新结果计数
             document.getElementById('resultCount').textContent = resources.length;
         }
 
+        // 将文件转换为Base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
         // 上传表单提交
-        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const formData = new FormData(this);
             
@@ -1739,62 +2685,134 @@
             const tags = formData.get('tags').split(',').map(tag => tag.trim()).filter(tag => tag);
             const files = uploadFileInput.files;
             
+            if (files.length === 0) {
+                showNotification('请选择要上传的文件', 'error');
+                return;
+            }
+            
             // 显示进度条
             const progressContainer = document.getElementById('uploadProgress');
             const progressBar = document.getElementById('progressBar');
             const progressPercent = document.getElementById('progressPercent');
             progressContainer.style.display = 'block';
             
-            // 模拟上传进度
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 10;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
+            // 实际上传过程
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    if (progress > 90) {
+                        progress = 90;
+                    }
+                    progressBar.style.width = `${progress}%`;
+                    progressPercent.textContent = `${Math.round(progress)}%`;
+                }, 100);
+                
+                try {
+                    // 将文件转换为Base64
+                    const fileData = await fileToBase64(file);
                     
-                    // 模拟上传成功后的延迟
-                    setTimeout(() => {
-                        // 为每个文件创建资源对象
-                        for (let i = 0; i < files.length; i++) {
-                            const file = files[i];
-                            const resource = {
-                                id: Date.now() + i,
-                                title: i > 0 ? `${title} (${i + 1})` : title,
-                                category: category,
-                                description: description,
-                                file: file,
-                                uploader: '当前用户',
-                                uploadDate: new Date().toISOString().split('T')[0],
-                                downloads: 0,
-                                rating: 5.0,
-                                comments: 0,
-                                tags: tags
-                            };
-                            
-                            // 添加到资源数组
-                            resources.push(resource);
-                        }
-                        
-                        // 显示成功通知
-                        showNotification('资料上传成功！已显示在平台上', 'success');
-                        
-                        // 更新资料显示
-                        displayUploadedResources();
-                        
-                        // 关闭模态框并重置表单
-                        modals.upload.style.display = 'none';
-                        this.reset();
-                        filePreview.innerHTML = '';
-                        progressContainer.style.display = 'none';
-                        progressBar.style.width = '0%';
-                        progressPercent.textContent = '0%';
-                    }, 500);
+                    // 创建资源对象
+                    const resource = {
+                        id: Date.now() + i,
+                        title: i > 0 ? `${title} (${i + 1})` : title,
+                        category: category,
+                        description: description,
+                        fileName: file.name,
+                        fileSize: file.size,
+                        fileType: file.type,
+                        fileData: fileData, // 实际的文件数据（Base64）
+                        uploader: currentUser ? currentUser.username : '匿名用户',
+                        uploadDate: new Date().toISOString().split('T')[0],
+                        downloads: 0,
+                        rating: 5.0,
+                        comments: 0,
+                        tags: tags
+                    };
+                    
+                    // 添加到资源数组
+                    resources.push(resource);
+                    
+                    // 保存资源到localStorage
+                    saveResources(resources);
+                    
+                    // 添加到上传历史记录
+                    addToUploadHistory(resource);
+                    
+                    // 更新进度到100%
+                    clearInterval(interval);
+                    progressBar.style.width = '100%';
+                    progressPercent.textContent = '100%';
+                } catch (error) {
+                    clearInterval(interval);
+                    showNotification(`文件上传失败：${file.name}`, 'error');
+                    continue;
                 }
-                progressBar.style.width = `${progress}%`;
-                progressPercent.textContent = `${Math.round(progress)}%`;
-            }, 200);
+            }
+            
+            // 延迟关闭进度条
+            setTimeout(() => {
+                // 显示成功通知
+                showNotification(`资料上传成功！共上传 ${files.length} 个文件`, 'success');
+                
+                // 更新资料显示
+                displayUploadedResources();
+                
+                // 关闭模态框并重置表单
+                modals.upload.style.display = 'none';
+                this.reset();
+                filePreview.innerHTML = '';
+                progressContainer.style.display = 'none';
+                progressBar.style.width = '0%';
+                progressPercent.textContent = '0%';
+            }, 500);
         });
+        
+        // 下载资料
+        function downloadResource(resource) {
+            showNotification(`正在下载：${resource.title}`, 'info');
+            
+            // 从Base64转换为Blob
+            const base64ToBlob = (base64, contentType = '', sliceSize = 512) => {
+                const byteCharacters = atob(base64.split(',')[1]);
+                const byteArrays = [];
+                
+                for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                    const slice = byteCharacters.slice(offset, offset + sliceSize);
+                    
+                    const byteNumbers = new Array(slice.length);
+                    for (let i = 0; i < slice.length; i++) {
+                        byteNumbers[i] = slice.charCodeAt(i);
+                    }
+                    
+                    const byteArray = new Uint8Array(byteNumbers);
+                    byteArrays.push(byteArray);
+                }
+                
+                return new Blob(byteArrays, { type: contentType });
+            };
+            
+            // 创建下载链接
+            const blob = base64ToBlob(resource.fileData, resource.fileType);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = resource.fileName;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
+            // 更新下载次数
+            resource.downloads++;
+            updateResourceStats(resource);
+            // 保存资源到localStorage
+            saveResources(resources);
+            
+            // 添加到下载历史记录
+            addToDownloadHistory(resource);
+            
+            showNotification(`下载完成：${resource.title}`, 'success');
+        }
 
         // 回到顶部按钮
         const backToTopBtn = document.getElementById('backToTop');
@@ -1876,32 +2894,1018 @@
             }, 300);
         }
         
-        // 更新注册和登录表单的通知
+        // 用户状态管理
+        let currentUser = null;
+        
+        // 检查用户登录状态
+        function checkUserStatus() {
+            const user = localStorage.getItem('currentUser');
+            if (user) {
+                currentUser = JSON.parse(user);
+                updateUserInterface();
+                updateMessageBadge();
+            }
+        }
+        
+        // 更新用户界面
+        function updateUserInterface() {
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const uploadBtn = document.getElementById('uploadBtn');
+            
+            if (currentUser) {
+                // 用户已登录
+                loginBtn.textContent = `欢迎, ${currentUser.username}`;
+                loginBtn.onclick = () => {
+                    // 显示用户菜单
+                    showUserMenu();
+                };
+                registerBtn.textContent = '注销';
+                registerBtn.onclick = () => {
+                    logout();
+                };
+                uploadBtn.style.display = 'inline-block'; // 显示上传按钮
+            } else {
+                // 用户未登录
+                loginBtn.textContent = '登录';
+                loginBtn.onclick = () => {
+                    modals.login.style.display = 'block';
+                };
+                registerBtn.textContent = '注册';
+                registerBtn.onclick = () => {
+                    modals.register.style.display = 'block';
+                };
+                uploadBtn.style.display = 'none'; // 隐藏上传按钮
+            }
+        }
+        
+        // 显示用户菜单
+        function showUserMenu() {
+            // 这里可以添加用户菜单的显示逻辑
+            showNotification(`当前用户：${currentUser.username}`, 'info');
+        }
+        
+        // 注销功能
+        function logout() {
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            updateUserInterface();
+            updateMessageBadge();
+            showNotification('注销成功！', 'success');
+        }
+        
+        // 收藏功能
+        function toggleFavorite(resourceId, button) {
+            if (!currentUser) {
+                showNotification('请先登录后再收藏', 'warning');
+                return;
+            }
+            
+            // 获取用户收藏
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+            if (!favorites[currentUser.id]) {
+                favorites[currentUser.id] = [];
+            }
+            
+            const index = favorites[currentUser.id].indexOf(resourceId);
+            if (index > -1) {
+                // 取消收藏
+                favorites[currentUser.id].splice(index, 1);
+                button.classList.remove('favorited');
+                button.textContent = '❤️ 收藏';
+                showNotification('已取消收藏', 'info');
+            } else {
+                // 添加收藏
+                favorites[currentUser.id].push(resourceId);
+                button.classList.add('favorited');
+                button.textContent = '❤️ 已收藏';
+                showNotification('收藏成功', 'success');
+            }
+            
+            // 保存收藏
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+        
+        // 关注功能
+        function toggleFollow(username, button) {
+            if (!currentUser) {
+                showNotification('请先登录后再关注', 'warning');
+                return;
+            }
+            
+            // 获取用户关注
+            let follows = JSON.parse(localStorage.getItem('follows')) || {};
+            if (!follows[currentUser.id]) {
+                follows[currentUser.id] = [];
+            }
+            
+            const index = follows[currentUser.id].indexOf(username);
+            if (index > -1) {
+                // 取消关注
+                follows[currentUser.id].splice(index, 1);
+                button.classList.remove('followed');
+                button.textContent = '👥 关注作者';
+                showNotification('已取消关注', 'info');
+            } else {
+                // 添加关注
+                follows[currentUser.id].push(username);
+                button.classList.add('followed');
+                button.textContent = '👥 已关注';
+                showNotification('关注成功', 'success');
+                
+                // 生成系统消息
+                generateSystemMessage(currentUser.id, `您已成功关注了作者 "${username}"`);
+            }
+            
+            // 保存关注
+            localStorage.setItem('follows', JSON.stringify(follows));
+        }
+        
+        // 消息系统
+        function getMessages() {
+            return JSON.parse(localStorage.getItem('messages')) || {};
+        }
+        
+        function saveMessages(messages) {
+            localStorage.setItem('messages', JSON.stringify(messages));
+        }
+        
+        function loadMessages() {
+            if (!currentUser) return;
+            
+            const messages = getMessages();
+            const userMessages = messages[currentUser.id] || [];
+            const messagesContainer = document.getElementById('messagesContainer');
+            
+            messagesContainer.innerHTML = '';
+            
+            if (userMessages.length === 0) {
+                messagesContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">暂无消息</p>';
+                return;
+            }
+            
+            // 按时间倒序排列
+            userMessages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            userMessages.forEach(message => {
+                const messageItem = document.createElement('div');
+                messageItem.className = `message-item ${message.read ? '' : 'unread'}`;
+                messageItem.innerHTML = `
+                    <div class="message-header">
+                        <span class="message-sender">${message.sender}</span>
+                        <span class="message-date">${new Date(message.timestamp).toLocaleString()}</span>
+                    </div>
+                    <div class="message-content">${message.content}</div>
+                    <div class="message-actions">
+                        ${!message.read ? `<button class="message-action-btn" onclick="markMessageAsRead(${message.id})">标记已读</button>` : ''}
+                        <button class="message-action-btn" onclick="deleteMessage(${message.id})">删除</button>
+                    </div>
+                `;
+                messagesContainer.appendChild(messageItem);
+            });
+            
+            // 更新消息徽章
+            updateMessageBadge();
+        }
+        
+        function markMessageAsRead(messageId) {
+            if (!currentUser) return;
+            
+            const messages = getMessages();
+            if (!messages[currentUser.id]) return;
+            
+            const message = messages[currentUser.id].find(m => m.id === messageId);
+            if (message) {
+                message.read = true;
+                saveMessages(messages);
+                loadMessages();
+                showNotification('消息已标记为已读', 'success');
+            }
+        }
+        
+        function markAllMessagesAsRead() {
+            if (!currentUser) return;
+            
+            const messages = getMessages();
+            if (!messages[currentUser.id]) return;
+            
+            messages[currentUser.id].forEach(message => {
+                message.read = true;
+            });
+            
+            saveMessages(messages);
+            loadMessages();
+            showNotification('所有消息已标记为已读', 'success');
+        }
+        
+        function deleteMessage(messageId) {
+            if (!currentUser) return;
+            
+            const messages = getMessages();
+            if (!messages[currentUser.id]) return;
+            
+            const index = messages[currentUser.id].findIndex(m => m.id === messageId);
+            if (index > -1) {
+                messages[currentUser.id].splice(index, 1);
+                saveMessages(messages);
+                loadMessages();
+                showNotification('消息已删除', 'info');
+            }
+        }
+        
+        function generateSystemMessage(userId, content) {
+            const messages = getMessages();
+            if (!messages[userId]) {
+                messages[userId] = [];
+            }
+            
+            const message = {
+                id: Date.now(),
+                sender: '系统通知',
+                content: content,
+                timestamp: new Date().toISOString(),
+                read: false
+            };
+            
+            messages[userId].push(message);
+            saveMessages(messages);
+            
+            // 如果当前用户就是消息接收者，更新徽章
+            if (currentUser && currentUser.id === userId) {
+                updateMessageBadge();
+            }
+        }
+        
+        function updateMessageBadge() {
+            if (!currentUser) {
+                document.getElementById('messageBadge').textContent = '0';
+                return;
+            }
+            
+            const messages = getMessages();
+            const userMessages = messages[currentUser.id] || [];
+            const unreadCount = userMessages.filter(m => !m.read).length;
+            
+            document.getElementById('messageBadge').textContent = unreadCount;
+        }
+        
+        // 发送消息（可选功能）
+        function sendMessage(receiverId, content) {
+            const messages = getMessages();
+            if (!messages[receiverId]) {
+                messages[receiverId] = [];
+            }
+            
+            const message = {
+                id: Date.now(),
+                sender: currentUser.username,
+                content: content,
+                timestamp: new Date().toISOString(),
+                read: false
+            };
+            
+            messages[receiverId].push(message);
+            saveMessages(messages);
+        }
+        
+        // 高级搜索功能
+        function performAdvancedSearch() {
+            const query = document.getElementById('advancedSearchQuery').value.toLowerCase();
+            const category = document.getElementById('advancedSearchCategory').value;
+            const tag = document.getElementById('advancedSearchTag').value.toLowerCase();
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo = document.getElementById('dateTo').value;
+            const minRating = parseFloat(document.getElementById('advancedSearchRating').value);
+            const minDownloads = parseInt(document.getElementById('advancedSearchDownloads').value);
+            
+            const allCards = document.querySelectorAll('.resource-card');
+            let visibleCount = 0;
+            
+            allCards.forEach(card => {
+                // 获取卡片信息
+                const cardTitle = card.querySelector('.resource-title').textContent.toLowerCase();
+                const cardDesc = card.querySelector('.resource-description').textContent.toLowerCase();
+                const cardCategory = card.querySelector('.resource-category').textContent;
+                const cardTags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase());
+                const cardDate = card.querySelector('.resource-meta span:nth-child(1)').textContent.replace('📅 ', '');
+                const cardRating = parseFloat(card.querySelector('.resource-stats span:nth-child(2)').textContent.replace('⭐ 评分：', ''));
+                const cardDownloads = parseInt(card.querySelector('.resource-stats span:nth-child(1)').textContent.replace('📥 下载：', ''));
+                
+                // 应用筛选条件
+                let isMatch = true;
+                
+                // 关键词筛选
+                if (query) {
+                    const hasQueryMatch = cardTitle.includes(query) || cardDesc.includes(query);
+                    if (!hasQueryMatch) isMatch = false;
+                }
+                
+                // 分类筛选
+                if (category && cardCategory !== category) {
+                    isMatch = false;
+                }
+                
+                // 标签筛选
+                if (tag && !cardTags.some(t => t.includes(tag))) {
+                    isMatch = false;
+                }
+                
+                // 日期范围筛选
+                if (dateFrom && new Date(cardDate) < new Date(dateFrom)) {
+                    isMatch = false;
+                }
+                if (dateTo && new Date(cardDate) > new Date(dateTo)) {
+                    isMatch = false;
+                }
+                
+                // 评分筛选
+                if (minRating > 0 && cardRating < minRating) {
+                    isMatch = false;
+                }
+                
+                // 下载量筛选
+                if (minDownloads > 0 && cardDownloads < minDownloads) {
+                    isMatch = false;
+                }
+                
+                // 显示或隐藏卡片
+                if (isMatch) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.6s ease forwards';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // 更新结果计数
+            document.getElementById('resultCount').textContent = visibleCount;
+            
+            // 重置分类和标签的激活状态
+            document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+            document.querySelector('.category-card:first-child').classList.add('active');
+            document.querySelectorAll('.tag').forEach(tag => tag.classList.remove('active'));
+            
+            // 关闭模态框
+            modals.advancedSearch.style.display = 'none';
+            
+            // 显示搜索结果通知
+            showNotification(`高级搜索完成，找到 ${visibleCount} 个结果`, 'success');
+        }
+        
+        // 获取用户数据
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('users')) || [];
+        }
+        
+        // 保存用户数据
+        function saveUsers(users) {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+        
+        // 注册表单提交
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
+            const username = formData.get('username');
+            const email = formData.get('email');
             const password = formData.get('password');
             const confirmPassword = formData.get('confirmPassword');
             
+            // 表单验证
             if (password !== confirmPassword) {
                 showNotification('两次输入的密码不一致', 'error');
                 return;
             }
             
-            // 模拟注册成功
+            // 检查用户名是否已存在
+            const users = getUsers();
+            if (users.some(user => user.username === username)) {
+                showNotification('用户名已存在', 'error');
+                return;
+            }
+            
+            // 检查邮箱是否已存在
+            if (users.some(user => user.email === email)) {
+                showNotification('邮箱已被注册', 'error');
+                return;
+            }
+            
+            // 创建新用户
+            const newUser = {
+                id: Date.now(),
+                username: username,
+                email: email,
+                password: password, // 实际项目中应该使用加密存储
+                createdAt: new Date().toISOString()
+            };
+            
+            // 保存用户
+            users.push(newUser);
+            saveUsers(users);
+            
+            // 自动登录
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            currentUser = newUser;
+            
+            // 更新界面
+            updateUserInterface();
+            updateMessageBadge();
+            
             showNotification('注册成功！欢迎加入学习资料分享平台', 'success');
+            generateSystemMessage(newUser.id, '欢迎注册学习资料分享平台！您可以开始上传和下载学习资料了。');
             modals.register.style.display = 'none';
             this.reset();
         });
         
+        // 登录表单提交
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
+            const email = formData.get('email');
+            const password = formData.get('password');
             
-            // 模拟登录成功
-            showNotification('登录成功！', 'success');
-            modals.login.style.display = 'none';
-            this.reset();
+            // 检查用户
+            const users = getUsers();
+            const user = users.find(user => user.email === email && user.password === password);
+            
+            if (user) {
+                // 登录成功
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                currentUser = user;
+                updateUserInterface();
+                updateMessageBadge();
+                showNotification('登录成功！', 'success');
+                generateSystemMessage(user.id, '欢迎回来！您有新的消息吗？');
+                modals.login.style.display = 'none';
+                this.reset();
+            } else {
+                // 登录失败
+                showNotification('邮箱或密码错误', 'error');
+            }
+        });
+        
+        // 更新个人资料
+        document.getElementById('updateProfileBtn').addEventListener('click', function() {
+            if (!currentUser) {
+                showNotification('请先登录后更新个人资料', 'warning');
+                return;
+            }
+            
+            // 获取个人简介
+            const bio = document.getElementById('profileBio').value;
+            
+            // 更新用户数据
+            currentUser.bio = bio;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            // 更新用户数据到用户列表
+            const users = getUsers();
+            const userIndex = users.findIndex(user => user.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex].bio = bio;
+                saveUsers(users);
+            }
+            
+            showNotification('个人资料更新成功', 'success');
+            generateSystemMessage(currentUser.id, '您的个人资料已成功更新');
+        });
+        
+        // 标记全部已读按钮事件
+        document.getElementById('markAllReadBtn').addEventListener('click', function() {
+            markAllMessagesAsRead();
+        });
+        
+        // 高级搜索表单提交
+        document.getElementById('advancedSearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            performAdvancedSearch();
+        });
+        
+        // 查看下载历史按钮事件
+        document.getElementById('viewDownloadHistoryBtn').addEventListener('click', function() {
+            if (!currentUser) {
+                showNotification('请先登录后查看下载历史', 'warning');
+                return;
+            }
+            loadDownloadHistory();
+            modals.downloadHistory.style.display = 'block';
+        });
+        
+        // 查看上传历史按钮事件
+        document.getElementById('viewUploadHistoryBtn').addEventListener('click', function() {
+            if (!currentUser) {
+                showNotification('请先登录后查看上传历史', 'warning');
+                return;
+            }
+            loadUploadHistory();
+            modals.uploadHistory.style.display = 'block';
+        });
+        
+        // 清空下载历史按钮事件
+        document.getElementById('clearDownloadHistoryBtn').addEventListener('click', function() {
+            clearDownloadHistory();
+        });
+        
+        // 清空上传历史按钮事件
+        document.getElementById('clearUploadHistoryBtn').addEventListener('click', function() {
+            clearUploadHistory();
+        });
+
+        // 举报功能
+        let currentReportResourceId = null;
+        
+        function openReportModal(resourceId, resourceTitle) {
+            if (!currentUser) {
+                showNotification('请先登录后再举报资料', 'warning');
+                return;
+            }
+            
+            currentReportResourceId = resourceId;
+            document.getElementById('reportResourceId').value = resourceId;
+            document.getElementById('reportReason').value = '';
+            document.getElementById('reportDescription').value = '';
+            
+            // 更新模态框标题，显示被举报的资料名称
+            modals.report.querySelector('.modal-header h2').textContent = `🚫 举报资料 - ${resourceTitle}`;
+            
+            modals.report.style.display = 'block';
+        }
+        
+        function getReports() {
+            return JSON.parse(localStorage.getItem('reports')) || {};
+        }
+        
+        function saveReports(reports) {
+            localStorage.setItem('reports', JSON.stringify(reports));
+        }
+        
+        function addToReportHistory(report) {
+            if (!currentUser) return;
+            
+            let reportHistory = JSON.parse(localStorage.getItem('reportHistory')) || {};
+            if (!reportHistory[currentUser.id]) {
+                reportHistory[currentUser.id] = [];
+            }
+            
+            reportHistory[currentUser.id].unshift(report);
+            
+            // 限制历史记录数量为50条
+            if (reportHistory[currentUser.id].length > 50) {
+                reportHistory[currentUser.id] = reportHistory[currentUser.id].slice(0, 50);
+            }
+            
+            localStorage.setItem('reportHistory', JSON.stringify(reportHistory));
+        }
+        
+        function loadReportHistory() {
+            if (!currentUser) {
+                showNotification('请先登录后查看举报记录', 'warning');
+                return;
+            }
+            
+            const reportHistory = JSON.parse(localStorage.getItem('reportHistory')) || {};
+            const userReports = reportHistory[currentUser.id] || [];
+            const reportHistoryContent = document.getElementById('reportHistoryContent');
+            
+            if (userReports.length === 0) {
+                reportHistoryContent.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">暂无举报记录</p>';
+                return;
+            }
+            
+            reportHistoryContent.innerHTML = `
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 1rem;">
+                    <thead>
+                        <tr style="background: #f0f0f0; text-align: left;">
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">资料名称</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">举报原因</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">举报时间</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${userReports.map(report => `
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem;">${report.resourceTitle}</td>
+                                <td style="padding: 1rem;">${getReportReasonText(report.reason)}</td>
+                                <td style="padding: 1rem;">${new Date(report.reportDate).toLocaleString()}</td>
+                                <td style="padding: 1rem;">
+                                    <span style="padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600;
+                                        ${report.status === 'pending' ? 'background: #ffeb3b; color: #333;' : 
+                                          report.status === 'processed' ? 'background: #4caf50; color: white;' : 
+                                          'background: #f44336; color: white;'}">
+                                        ${getStatusText(report.status)}
+                                    </span>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                <div style="text-align: right; margin-top: 1rem;">
+                    <p style="color: #666; font-size: 0.9rem;">共 ${userReports.length} 条记录</p>
+                </div>
+            `;
+        }
+        
+        function getReportReasonText(reason) {
+            const reasons = {
+                spam: '垃圾信息',
+                inappropriate: '不当内容',
+                copyright: '版权侵犯',
+                duplicate: '重复资料',
+                other: '其他原因'
+            };
+            return reasons[reason] || reason;
+        }
+        
+        function getStatusText(status) {
+            const statuses = {
+                pending: '处理中',
+                processed: '已处理',
+                rejected: '驳回'
+            };
+            return statuses[status] || status;
+        }
+        
+        // 举报表单提交
+        document.getElementById('reportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!currentUser || !currentReportResourceId) return;
+            
+            const reason = document.getElementById('reportReason').value;
+            const description = document.getElementById('reportDescription').value;
+            
+            if (!reason || !description) {
+                showNotification('请填写完整的举报信息', 'error');
+                return;
+            }
+            
+            // 获取被举报的资源信息
+            const resource = resources.find(r => r.id === currentReportResourceId);
+            if (!resource) {
+                showNotification('资源不存在或已被删除', 'error');
+                return;
+            }
+            
+            // 创建举报对象
+            const report = {
+                id: Date.now(),
+                resourceId: currentReportResourceId,
+                resourceTitle: resource.title,
+                reason: reason,
+                description: description,
+                reporterId: currentUser.id,
+                reporterName: currentUser.username,
+                reportDate: new Date().toISOString(),
+                status: 'pending'
+            };
+            
+            // 保存举报
+            const reports = getReports();
+            if (!reports[resource.id]) {
+                reports[resource.id] = [];
+            }
+            reports[resource.id].push(report);
+            saveReports(reports);
+            
+            // 添加到举报历史
+            addToReportHistory(report);
+            
+            // 显示成功通知
+            showNotification('举报成功，我们会尽快处理', 'success');
+            
+            // 关闭模态框
+            modals.report.style.display = 'none';
+            
+            // 生成系统消息
+            generateSystemMessage(currentUser.id, `您的举报已提交，我们会尽快处理。举报内容：${resource.title}`);
+        });
+        
+        // 查看举报历史按钮事件
+        function viewReportHistory() {
+            if (!currentUser) {
+                showNotification('请先登录后查看举报记录', 'warning');
+                return;
+            }
+            loadReportHistory();
+            modals.reportHistory.style.display = 'block';
+        }
+
+        // 分享功能
+        let currentShareResource = null;
+        
+        function openShareModal(resource) {
+            currentShareResource = resource;
+            
+            // 更新分享模态框中的资料信息
+            document.getElementById('shareResourceTitle').textContent = resource.title;
+            document.getElementById('shareResourceDescription').textContent = resource.description;
+            
+            // 生成分享链接
+            const shareLink = generateShareLink(resource);
+            document.getElementById('shareLink').value = shareLink;
+            
+            modals.share.style.display = 'block';
+        }
+        
+        function generateShareLink(resource) {
+            // 生成分享链接，包含资源ID和标题
+            const baseUrl = window.location.origin + window.location.pathname;
+            const encodedTitle = encodeURIComponent(resource.title);
+            return `${baseUrl}?share=${resource.id}&title=${encodedTitle}`;
+        }
+        
+        function shareToSocial(platform) {
+            if (!currentShareResource) return;
+            
+            const shareLink = generateShareLink(currentShareResource);
+            const title = currentShareResource.title;
+            const description = currentShareResource.description;
+            
+            switch (platform) {
+                case 'weixin':
+                    showNotification('请使用微信扫描二维码分享', 'info');
+                    // 这里可以生成二维码
+                    break;
+                case 'weibo':
+                    const weiboUrl = `http://service.weibo.com/share/share.php?url=${encodeURIComponent(shareLink)}&title=${encodeURIComponent(title)}&content=${encodeURIComponent(description)}`;
+                    window.open(weiboUrl, '_blank', 'width=600,height=400');
+                    break;
+                case 'qq':
+                    const qqUrl = `https://connect.qq.com/widget/shareqq/index.html?url=${encodeURIComponent(shareLink)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(description)}`;
+                    window.open(qqUrl, '_blank', 'width=600,height=400');
+                    break;
+                case 'linkedin':
+                    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareLink)}`;
+                    window.open(linkedinUrl, '_blank', 'width=600,height=400');
+                    break;
+                case 'copy':
+                    copyShareLink();
+                    break;
+            }
+        }
+        
+        function copyShareLink() {
+            const shareLinkInput = document.getElementById('shareLink');
+            shareLinkInput.select();
+            shareLinkInput.setSelectionRange(0, 99999); // 支持移动设备
+            
+            try {
+                document.execCommand('copy');
+                showNotification('分享链接已复制到剪贴板', 'success');
+            } catch (err) {
+                showNotification('复制失败，请手动复制', 'error');
+            }
+        }
+        
+        // 检查URL中的分享参数，用于处理分享链接
+        function checkShareParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const shareId = urlParams.get('share');
+            
+            if (shareId) {
+                // 找到对应的资源
+                const resource = resources.find(r => r.id === parseInt(shareId));
+                if (resource) {
+                    showNotification(`这是分享的资料：${resource.title}`, 'info');
+                    // 这里可以自动打开资源预览或跳转到资源页面
+                }
+            }
+        }
+
+        // 排行榜功能
+        function loadRanking() {
+            loadContributionRanking();
+            loadPopularRanking();
+        }
+        
+        function previewResourceById(resourceId) {
+            const resource = resources.find(r => r.id === resourceId);
+            if (resource) {
+                previewResource(resource);
+            } else {
+                showNotification('资源不存在或已被删除', 'error');
+            }
+        }
+        
+        function loadContributionRanking() {
+            // 计算用户贡献值（上传资料数量）
+            const userContributions = {};
+            
+            resources.forEach(resource => {
+                if (!userContributions[resource.uploader]) {
+                    userContributions[resource.uploader] = 0;
+                }
+                userContributions[resource.uploader]++;
+            });
+            
+            // 转换为数组并排序
+            const sortedContributions = Object.entries(userContributions)
+                .map(([username, count]) => ({ username, count }))
+                .sort((a, b) => b.count - a.count)
+                .slice(0, 10); // 只显示前10名
+            
+            const contributionContainer = document.getElementById('contributionRanking');
+            
+            if (sortedContributions.length === 0) {
+                contributionContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">暂无贡献记录</p>';
+                return;
+            }
+            
+            contributionContainer.innerHTML = `
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #f0f0f0; text-align: left;">
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">排名</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">用户</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">贡献数量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${sortedContributions.map((item, index) => `
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem; font-weight: 600;">
+                                    <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; margin-right: 0.5rem;
+                                        ${index === 0 ? 'background: #ffd700; color: white;' : 
+                                          index === 1 ? 'background: #c0c0c0; color: white;' : 
+                                          index === 2 ? 'background: #cd7f32; color: white;' : 
+                                          'background: #f0f0f0; color: #333;'};">
+                                        ${index + 1}
+                                    </span>
+                                </td>
+                                <td style="padding: 1rem;">${item.username}</td>
+                                <td style="padding: 1rem;">${item.count} 个资料</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+        
+        function loadPopularRanking() {
+            // 按下载量排序资料
+            const sortedResources = [...resources]
+                .sort((a, b) => b.downloads - a.downloads)
+                .slice(0, 10); // 只显示前10名
+            
+            const popularContainer = document.getElementById('popularRanking');
+            
+            if (sortedResources.length === 0) {
+                popularContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">暂无热门资料</p>';
+                return;
+            }
+            
+            popularContainer.innerHTML = `
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #f0f0f0; text-align: left;">
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">排名</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">资料名称</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">下载量</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${sortedResources.map((resource, index) => `
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem; font-weight: 600;">
+                                    <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; margin-right: 0.5rem;
+                                        ${index === 0 ? 'background: #ffd700; color: white;' : 
+                                          index === 1 ? 'background: #c0c0c0; color: white;' : 
+                                          index === 2 ? 'background: #cd7f32; color: white;' : 
+                                          'background: #f0f0f0; color: #333;'};">
+                                        ${index + 1}
+                                    </span>
+                                </td>
+                                <td style="padding: 1rem;">${resource.title}</td>
+                                <td style="padding: 1rem;">${resource.downloads}</td>
+                                <td style="padding: 1rem;">
+                                    <button class="form-btn form-btn-primary" style="padding: 0.3rem 0.8rem; font-size: 0.8rem;" onclick="previewResourceById(${resource.id})">预览</button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // 学习路径功能
+        function openLearningPathModal() {
+            modals.learningPath.style.display = 'block';
+        }
+        
+        function generateLearningPath() {
+            const category = document.getElementById('learningPathCategory').value;
+            if (!category) {
+                showNotification('请选择学习领域', 'warning');
+                return;
+            }
+            
+            // 根据选择的分类生成学习路径
+            const pathContent = document.getElementById('learningPathContent');
+            
+            // 清空之前的内容
+            pathContent.innerHTML = '';
+            
+            // 模拟学习路径数据
+            const learningPaths = {
+                '编程开发': [
+                    { title: '编程基础', description: '了解编程概念和基本语法', resources: ['Python从入门到精通', '算法与数据结构'] },
+                    { title: 'Web开发', description: '学习前端和后端开发技术', resources: ['HTML/CSS基础', 'JavaScript高级编程'] },
+                    { title: '移动开发', description: '开发移动应用程序', resources: ['React Native入门', 'Flutter实战'] },
+                    { title: 'DevOps', description: '学习开发运维一体化', resources: ['Docker容器技术', 'CI/CD实践'] }
+                ],
+                '数据分析': [
+                    { title: '数据基础', description: '了解数据概念和分析方法', resources: ['数据分析实战指南', '统计学基础'] },
+                    { title: '数据处理', description: '学习数据清洗和处理技术', resources: ['Pandas数据分析', 'SQL数据库'] },
+                    { title: '数据可视化', description: '学习数据展示和可视化', resources: ['Matplotlib实践', 'Tableau入门'] },
+                    { title: '机器学习', description: '应用机器学习算法进行分析', resources: ['机器学习基础教程', 'Scikit-learn实践'] }
+                ],
+                '设计创意': [
+                    { title: '设计基础', description: '了解设计原理和美学', resources: ['设计思维入门', '色彩理论基础'] },
+                    { title: '平面设计', description: '学习平面设计技术', resources: ['Photoshop基础', 'Illustrator实战'] },
+                    { title: 'UI/UX设计', description: '学习用户界面和体验设计', resources: ['Figma设计工具', '用户体验设计'] },
+                    { title: '3D设计', description: '学习三维设计技术', resources: ['Blender入门', '3D建模实战'] }
+                ],
+                '语言学习': [
+                    { title: '基础入门', description: '学习语言基础知识', resources: ['英语语法大全', '发音训练'] },
+                    { title: '词汇积累', description: '扩大词汇量', resources: ['常用词汇手册', '词汇记忆方法'] },
+                    { title: '听说训练', description: '提高听说能力', resources: ['听力训练', '口语实践'] },
+                    { title: '阅读写作', description: '提高阅读和写作能力', resources: ['阅读技巧', '写作指南'] }
+                ],
+                '市场营销': [
+                    { title: '营销基础', description: '了解市场营销概念', resources: ['市场营销原理', '消费者行为学'] },
+                    { title: '数字营销', description: '学习数字营销技术', resources: ['SEO优化', '社交媒体营销'] },
+                    { title: '内容营销', description: '学习内容创作和推广', resources: ['内容营销指南', '文案写作技巧'] },
+                    { title: '品牌管理', description: '学习品牌建设和管理', resources: ['品牌战略', '品牌定位'] }
+                ],
+                '教育教学': [
+                    { title: '教育理论', description: '了解教育教学理论', resources: ['教育学基础', '心理学原理'] },
+                    { title: '教学方法', description: '学习教学方法和技巧', resources: ['高效教学方法', '课堂管理'] },
+                    { title: '课程设计', description: '学习课程设计和开发', resources: ['课程设计指南', '教案编写'] },
+                    { title: '教育技术', description: '学习教育技术应用', resources: ['教育技术基础', '在线教育平台'] }
+                ],
+                '人工智能': [
+                    { title: 'AI基础', description: '了解人工智能概念', resources: ['人工智能导论', '机器学习基础教程'] },
+                    { title: '深度学习', description: '学习深度学习技术', resources: ['神经网络基础', 'TensorFlow实践'] },
+                    { title: '自然语言处理', description: '学习NLP技术', resources: ['NLP基础', '情感分析实践'] },
+                    { title: '计算机视觉', description: '学习计算机视觉技术', resources: ['图像处理基础', '目标检测'] }
+                ],
+                '网络安全': [
+                    { title: '安全基础', description: '了解网络安全概念', resources: ['网络安全导论', '安全意识培训'] },
+                    { title: '网络防护', description: '学习网络防护技术', resources: ['防火墙配置', '入侵检测'] },
+                    { title: '系统安全', description: '学习系统安全技术', resources: ['操作系统安全', '漏洞扫描'] },
+                    { title: '加密技术', description: '学习加密技术应用', resources: ['密码学基础', 'SSL/TLS原理'] }
+                ]
+            };
+            
+            const path = learningPaths[category];
+            if (!path) {
+                showNotification('暂无该领域的学习路径', 'info');
+                return;
+            }
+            
+            // 生成学习路径HTML
+            let pathHTML = `
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                    <h3 style="color: #667eea; margin-bottom: 1rem;">${category}学习路径</h3>
+                    <p style="color: #666;">以下是为您定制的学习路径，按照从基础到高级的顺序排列</p>
+                </div>
+            `;
+            
+            path.forEach((step, index) => {
+                pathHTML += `
+                    <div style="background: white; border: 1px solid #e0e0e0; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem;">
+                                ${index + 1}
+                            </div>
+                            <h4 style="font-size: 1.2rem; font-weight: 600; color: #333;">${step.title}</h4>
+                        </div>
+                        <p style="color: #666; margin-bottom: 1rem; margin-left: 40px;">${step.description}</p>
+                        <div style="margin-left: 40px;">
+                            <h5 style="font-weight: 600; color: #667eea; margin-bottom: 0.5rem;">推荐资源：</h5>
+                            <ul style="list-style: none; padding: 0;">
+                                ${step.resources.map(resource => `
+                                    <li style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 0.5rem; display: inline-block; margin-right: 0.5rem;">
+                                        ${resource}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // 添加到页面
+            pathContent.innerHTML = pathHTML;
+        }
+        
+        // 页面加载时检查用户状态
+        window.addEventListener('load', function() {
+            checkUserStatus();
+            checkShareParam();
         });
 
         // 搜索建议数据源
@@ -1986,6 +3990,11 @@
 
             // 更新结果计数
             document.getElementById('resultCount').textContent = visibleCount;
+            
+            // 重置分类和标签的激活状态
+            document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+            document.querySelector('.category-card:first-child').classList.add('active');
+            document.querySelectorAll('.tag').forEach(tag => tag.classList.remove('active'));
         }
 
         // 初始化搜索建议功能
@@ -2059,6 +4068,12 @@
 
         // 页面加载时初始化搜索建议
         window.addEventListener('load', initSearchSuggestions);
+        
+        // 学习路径按钮事件
+        document.getElementById('learningPathBtn').addEventListener('click', openLearningPathModal);
+        
+        // 生成学习路径按钮事件
+        document.getElementById('generatePathBtn').addEventListener('click', generateLearningPath);
 
         // 资料卡片下载按钮
         document.querySelectorAll('.resource-button').forEach(button => {
@@ -2067,6 +4082,22 @@
                 const title = card.querySelector('.resource-title').textContent;
                 alert(`正在下载：${title}`);
                 // 这里可以添加实际的下载逻辑
+            });
+        });
+        
+        // 收藏按钮事件
+        document.querySelectorAll('.favorite-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const resourceId = parseInt(this.getAttribute('data-resource-id'));
+                toggleFavorite(resourceId, this);
+            });
+        });
+        
+        // 关注按钮事件
+        document.querySelectorAll('.follow-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const username = this.getAttribute('data-user');
+                toggleFollow(username, this);
             });
         });
 
@@ -2088,11 +4119,19 @@
 
             // 更新结果计数
             document.getElementById('resultCount').textContent = visibleCount;
+            
+            // 移除所有标签的active类
+            document.querySelectorAll('.tag').forEach(tag => tag.classList.remove('active'));
         }
 
         // 分类卡片点击事件
         document.querySelectorAll('.category-card').forEach(card => {
             card.addEventListener('click', function() {
+                // 移除所有分类卡片的active类
+                document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+                // 为当前卡片添加active类
+                this.classList.add('active');
+                // 执行筛选
                 const category = this.querySelector('h3').textContent;
                 filterByCategory(category);
             });
@@ -2116,6 +4155,11 @@
 
             // 更新结果计数
             document.getElementById('resultCount').textContent = visibleCount;
+            
+            // 移除所有分类卡片的active类
+            document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+            // 为"全部"分类添加active类，因为标签筛选是跨分类的
+            document.querySelector('.category-card:first-child').classList.add('active');
         }
 
         // 标签点击事件
@@ -2124,6 +4168,206 @@
                 e.stopPropagation(); // 防止触发卡片点击
                 const tagText = this.textContent;
                 filterByTag(tagText);
+                
+                // 移除所有标签的active类
+                document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+                // 为当前标签添加active类
+                this.classList.add('active');
+            });
+        });
+        
+        // 历史记录管理函数
+        function addToDownloadHistory(resource) {
+            if (!currentUser) return;
+            
+            let downloadHistory = JSON.parse(localStorage.getItem('downloadHistory')) || {};
+            if (!downloadHistory[currentUser.id]) {
+                downloadHistory[currentUser.id] = [];
+            }
+            
+            const historyItem = {
+                id: Date.now(),
+                resourceId: resource.id,
+                title: resource.title,
+                fileName: resource.fileName,
+                downloadDate: new Date().toISOString(),
+                category: resource.category
+            };
+            
+            downloadHistory[currentUser.id].unshift(historyItem);
+            
+            // 限制历史记录数量为100条
+            if (downloadHistory[currentUser.id].length > 100) {
+                downloadHistory[currentUser.id] = downloadHistory[currentUser.id].slice(0, 100);
+            }
+            
+            localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
+        }
+        
+        function addToUploadHistory(resource) {
+            if (!currentUser) return;
+            
+            let uploadHistory = JSON.parse(localStorage.getItem('uploadHistory')) || {};
+            if (!uploadHistory[currentUser.id]) {
+                uploadHistory[currentUser.id] = [];
+            }
+            
+            const historyItem = {
+                id: Date.now(),
+                resourceId: resource.id,
+                title: resource.title,
+                fileName: resource.fileName,
+                uploadDate: new Date().toISOString(),
+                category: resource.category,
+                fileSize: resource.fileSize
+            };
+            
+            uploadHistory[currentUser.id].unshift(historyItem);
+            
+            // 限制历史记录数量为100条
+            if (uploadHistory[currentUser.id].length > 100) {
+                uploadHistory[currentUser.id] = uploadHistory[currentUser.id].slice(0, 100);
+            }
+            
+            localStorage.setItem('uploadHistory', JSON.stringify(uploadHistory));
+        }
+        
+        function loadDownloadHistory() {
+            if (!currentUser) return;
+            
+            const downloadHistory = JSON.parse(localStorage.getItem('downloadHistory')) || {};
+            const userHistory = downloadHistory[currentUser.id] || [];
+            const historyContent = document.getElementById('downloadHistoryContent');
+            
+            if (userHistory.length === 0) {
+                historyContent.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">暂无下载历史记录</p>';
+                return;
+            }
+            
+            historyContent.innerHTML = `
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 1rem;">
+                    <thead>
+                        <tr style="background: #f0f0f0; text-align: left;">
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">资料名称</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">文件名称</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">分类</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">下载时间</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${userHistory.map(item => `
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem;">${item.title}</td>
+                                <td style="padding: 1rem;">${item.fileName}</td>
+                                <td style="padding: 1rem;">${item.category}</td>
+                                <td style="padding: 1rem;">${new Date(item.downloadDate).toLocaleString()}</td>
+                                <td style="padding: 1rem;">
+                                    <button class="form-btn form-btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="downloadResourceById(${item.resourceId})">重新下载</button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                <div style="text-align: right; margin-top: 1rem;">
+                    <p style="color: #666; font-size: 0.9rem;">共 ${userHistory.length} 条记录</p>
+                </div>
+            `;
+        }
+        
+        function loadUploadHistory() {
+            if (!currentUser) return;
+            
+            const uploadHistory = JSON.parse(localStorage.getItem('uploadHistory')) || {};
+            const userHistory = uploadHistory[currentUser.id] || [];
+            const historyContent = document.getElementById('uploadHistoryContent');
+            
+            if (userHistory.length === 0) {
+                historyContent.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">暂无上传历史记录</p>';
+                return;
+            }
+            
+            historyContent.innerHTML = `
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 1rem;">
+                    <thead>
+                        <tr style="background: #f0f0f0; text-align: left;">
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">资料名称</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">文件名称</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">分类</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">文件大小</th>
+                            <th style="padding: 1rem; border-bottom: 2px solid #667eea;">上传时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${userHistory.map(item => `
+                            <tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 1rem;">${item.title}</td>
+                                <td style="padding: 1rem;">${item.fileName}</td>
+                                <td style="padding: 1rem;">${item.category}</td>
+                                <td style="padding: 1rem;">${formatFileSize(item.fileSize)}</td>
+                                <td style="padding: 1rem;">${new Date(item.uploadDate).toLocaleString()}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                <div style="text-align: right; margin-top: 1rem;">
+                    <p style="color: #666; font-size: 0.9rem;">共 ${userHistory.length} 条记录</p>
+                </div>
+            `;
+        }
+        
+        function clearDownloadHistory() {
+            if (!currentUser) return;
+            
+            let downloadHistory = JSON.parse(localStorage.getItem('downloadHistory')) || {};
+            delete downloadHistory[currentUser.id];
+            localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
+            
+            loadDownloadHistory();
+            showNotification('下载历史记录已清空', 'success');
+        }
+        
+        function clearUploadHistory() {
+            if (!currentUser) return;
+            
+            let uploadHistory = JSON.parse(localStorage.getItem('uploadHistory')) || {};
+            delete uploadHistory[currentUser.id];
+            localStorage.setItem('uploadHistory', JSON.stringify(uploadHistory));
+            
+            loadUploadHistory();
+            showNotification('上传历史记录已清空', 'success');
+        }
+        
+        function downloadResourceById(resourceId) {
+            // 根据resourceId找到对应的资源
+            const resource = resources.find(r => r.id === resourceId);
+            if (resource) {
+                downloadResource(resource);
+            } else {
+                showNotification('资料不存在或已被删除', 'error');
+            }
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            else if (bytes < (1024 * 1024)) return (bytes / 1024).toFixed(1) + ' KB';
+            else return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+        }
+        
+        // 预览按钮事件
+        document.querySelectorAll('.preview-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const resourceId = parseInt(this.getAttribute('data-resource-id'));
+                // 这里需要根据resourceId找到对应的资源对象
+                // 由于是示例，我们先创建一个模拟的资源对象
+                const mockResource = {
+                    id: resourceId,
+                    title: '资料预览',
+                    description: '这是资料的预览内容...',
+                    fileName: 'preview-file.pdf',
+                    fileType: 'application/pdf'
+                };
+                previewResource(mockResource);
             });
         });
 
@@ -2262,6 +4506,128 @@
                 }, 1500);
             });
         });
+        
+        // 资料预览功能
+        let currentPreviewResource = null;
+        
+        function previewResource(resource) {
+            currentPreviewResource = resource;
+            
+            // 更新预览模态框标题
+            document.getElementById('previewTitle').textContent = `👁️ ${resource.title} - 预览`;
+            
+            // 获取预览内容容器
+            const previewContent = document.getElementById('previewContent');
+            
+            // 根据文件类型显示不同的预览内容
+            const fileExtension = resource.fileName.split('.').pop().toLowerCase();
+            
+            let previewHTML = '';
+            
+            switch (fileExtension) {
+                case 'pdf':
+                    previewHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">📄</div>
+                            <h3>${resource.fileName}</h3>
+                            <p style="margin: 1rem 0; color: #666;">PDF文件预览</p>
+                            <p style="background: #f0f0f0; padding: 1rem; border-radius: 8px; text-align: left;">
+                                这是PDF文件的预览内容。由于浏览器限制，无法直接预览PDF文件内容。
+                                您可以点击下方的下载按钮下载完整文件进行查看。
+                            </p>
+                        </div>
+                    `;
+                    break;
+                case 'doc':
+                case 'docx':
+                    previewHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
+                            <h3>${resource.fileName}</h3>
+                            <p style="margin: 1rem 0; color: #666;">Word文档预览</p>
+                            <p style="background: #f0f0f0; padding: 1rem; border-radius: 8px; text-align: left;">
+                                这是Word文档的预览内容。由于浏览器限制，无法直接预览Word文档内容。
+                                您可以点击下方的下载按钮下载完整文件进行查看。
+                            </p>
+                        </div>
+                    `;
+                    break;
+                case 'zip':
+                case 'rar':
+                    previewHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">📦</div>
+                            <h3>${resource.fileName}</h3>
+                            <p style="margin: 1rem 0; color: #666;">压缩文件预览</p>
+                            <p style="background: #f0f0f0; padding: 1rem; border-radius: 8px; text-align: left;">
+                                这是压缩文件的预览内容。由于这是一个压缩文件，无法直接预览其内容。
+                                您可以点击下方的下载按钮下载完整文件并解压后查看。
+                            </p>
+                        </div>
+                    `;
+                    break;
+                case 'mp4':
+                    previewHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">🎬</div>
+                            <h3>${resource.fileName}</h3>
+                            <p style="margin: 1rem 0; color: #666;">视频文件预览</p>
+                            <p style="background: #f0f0f0; padding: 1rem; border-radius: 8px; text-align: left;">
+                                这是视频文件的预览内容。由于文件大小限制，无法直接预览视频内容。
+                                您可以点击下方的下载按钮下载完整文件进行查看。
+                            </p>
+                        </div>
+                    `;
+                    break;
+                case 'mp3':
+                    previewHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">🎵</div>
+                            <h3>${resource.fileName}</h3>
+                            <p style="margin: 1rem 0; color: #666;">音频文件预览</p>
+                            <p style="background: #f0f0f0; padding: 1rem; border-radius: 8px; text-align: left;">
+                                这是音频文件的预览内容。由于文件大小限制，无法直接预览音频内容。
+                                您可以点击下方的下载按钮下载完整文件进行收听。
+                            </p>
+                        </div>
+                    `;
+                    break;
+                default:
+                    previewHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">📁</div>
+                            <h3>${resource.fileName}</h3>
+                            <p style="margin: 1rem 0; color: #666;">文件预览</p>
+                            <p style="background: #f0f0f0; padding: 1rem; border-radius: 8px; text-align: left;">
+                                这是文件的预览内容。由于文件类型限制，无法直接预览文件内容。
+                                您可以点击下方的下载按钮下载完整文件进行查看。
+                            </p>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            // 更新预览内容
+            previewContent.innerHTML = previewHTML;
+            
+            // 显示预览模态框
+            modals.preview.style.display = 'block';
+            
+            // 为下载按钮添加事件监听器
+            document.getElementById('downloadFromPreviewBtn').onclick = function() {
+                if (currentPreviewResource) {
+                    // 这里可以调用下载函数
+                    showNotification(`正在下载：${currentPreviewResource.title}`, 'info');
+                    
+                    // 模拟下载完成
+                    setTimeout(() => {
+                        showNotification(`下载完成：${currentPreviewResource.title}`, 'success');
+                        // 添加到下载历史记录
+                        addToDownloadHistory(currentPreviewResource);
+                    }, 1000);
+                }
+            };
+        }
     </script>
 </body>
 </html>
