@@ -1438,24 +1438,27 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">📚 学习资料分享平台</a>
-                <ul class="nav-links">
-                    <li><a href="#">首页</a></li>
-                    <li><a href="#">分类浏览</a></li>
-                    <li><a href="#">热门资料</a></li>
-                    <li><a href="#">最新上传</a></li>
-                    <li><a href="#" id="rankingBtn">🏆 排行榜</a></li>
-                    <li><a href="#" id="learningPathBtn">🎯 学习路径</a></li>
-                </ul>
-                <div class="user-actions">
-                    <button class="user-btn" id="themeToggle">🌓 切换主题</button>
-                    <button class="user-btn" id="messagesBtn">💬 消息 <span class="message-badge" id="messageBadge">0</span></button>
-                    <button class="user-btn" id="profileBtn">👤 个人资料</button>
-                    <button class="user-btn" id="loginBtn">登录</button>
-                    <button class="user-btn" id="registerBtn">注册</button>
-                    <button class="user-btn upload-btn" id="uploadBtn">📤 上传资料</button>
-                </div>
-            </nav>
+                    <a href="#" class="logo">📚 学习资料分享平台</a>
+                    <div class="hamburger" id="hamburger">
+                        ☰
+                    </div>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">分类浏览</a></li>
+                        <li><a href="#">热门资料</a></li>
+                        <li><a href="#">最新上传</a></li>
+                        <li><a href="#" id="rankingBtn">🏆 排行榜</a></li>
+                        <li><a href="#" id="learningPathBtn">🎯 学习路径</a></li>
+                    </ul>
+                    <div class="user-actions">
+                        <button class="user-btn" id="themeToggle">🌓 切换主题</button>
+                        <button class="user-btn" id="messagesBtn">💬 消息 <span class="message-badge" id="messageBadge">0</span></button>
+                        <button class="user-btn" id="profileBtn">👤 个人资料</button>
+                        <button class="user-btn" id="loginBtn">登录</button>
+                        <button class="user-btn" id="registerBtn">注册</button>
+                        <button class="user-btn upload-btn" id="uploadBtn">📤 上传资料</button>
+                    </div>
+                </nav>
         </div>
     </header>
 
@@ -4074,6 +4077,11 @@
         
         // 生成学习路径按钮事件
         document.getElementById('generatePathBtn').addEventListener('click', generateLearningPath);
+        
+        // 汉堡菜单事件
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
 
         // 资料卡片下载按钮
         document.querySelectorAll('.resource-button').forEach(button => {
