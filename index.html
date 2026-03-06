@@ -42,7 +42,7 @@
             color: var(--text-color);
             background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 15 ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -69,7 +69,7 @@
             border-radius: 50%;
             filter: blur(60px);
             opacity: 0.6;
-            animation: float 20s infinite;
+            animation: float 20 infinite;
         }
 
         .bg-animation .shape:nth-child(1) {
@@ -78,7 +78,7 @@
             background: #667eea;
             top: 10%;
             left: 10%;
-            animation-delay: 0s;
+            animation-delay: 0;
         }
 
         .bg-animation .shape:nth-child(2) {
@@ -87,7 +87,7 @@
             background: #f093fb;
             top: 60%;
             left: 70%;
-            animation-delay: -5s;
+            animation-delay: -5;
         }
 
         .bg-animation .shape:nth-child(3) {
@@ -96,7 +96,7 @@
             background: #4facfe;
             top: 30%;
             left: 50%;
-            animation-delay: -10s;
+            animation-delay: -10;
         }
 
         .bg-animation .shape:nth-child(4) {
@@ -105,7 +105,7 @@
             background: #f5576c;
             top: 80%;
             left: 20%;
-            animation-delay: -15s;
+            animation-delay: -15;
         }
 
         @keyframes float {
@@ -148,7 +148,7 @@
                 rgba(79, 172, 254, 0.35) 75%,
                 rgba(102, 126, 234, 0.35) 100%);
             background-size: 200% 200%;
-            animation: liquidNav 8s ease infinite;
+            animation: liquidNav 8 ease infinite;
             backdrop-filter: blur(25px) saturate(200%);
             -webkit-backdrop-filter: blur(25px) saturate(200%);
             color: white;
@@ -162,7 +162,7 @@
                 0 4px 16px rgba(102, 126, 234, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2),
                 inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @keyframes liquidNav {
@@ -184,7 +184,7 @@
                 rgba(79, 172, 254, 0.8) 80%,
                 transparent 100%);
             background-size: 200% 100%;
-            animation: shimmerNav 3s ease infinite;
+            animation: shimmerNav 3 ease infinite;
         }
 
         @keyframes shimmerNav {
@@ -230,7 +230,7 @@
             align-items: center;
             gap: 0.4rem;
             letter-spacing: -0.02em;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.2 ease;
         }
 
         .logo:hover {
@@ -248,7 +248,7 @@
             cursor: pointer;
             font-size: 1.2rem;
             z-index: 1001;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2 cubic-bezier(0.4, 0, 0.2, 1);
             color: white;
             width: 36px;
             height: 36px;
@@ -284,7 +284,7 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.82rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             padding: 0.38rem 0.95rem;
             display: inline-block;
@@ -301,7 +301,7 @@
                 rgba(102, 126, 234, 0.3),
                 rgba(240, 147, 251, 0.3));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3 ease;
         }
 
         .nav-links a:hover {
@@ -338,7 +338,7 @@
                 rgba(240, 147, 251, 0.25) 50%,
                 rgba(79, 172, 254, 0.25) 100%);
             background-size: 200% 200%;
-            animation: liquidDropdown 6s ease infinite;
+            animation: liquidDropdown 6 ease infinite;
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -347,7 +347,7 @@
             min-width: 180px;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow:
                 0 12px 40px rgba(0, 0, 0, 0.25),
                 0 6px 20px rgba(102, 126, 234, 0.15),
@@ -402,7 +402,7 @@
             font-size: 0.8rem;
             white-space: nowrap;
             position: relative;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2 cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .dropdown-menu a::before {
@@ -415,7 +415,7 @@
             height: 0;
             background: linear-gradient(180deg, #667eea, #f093fb);
             border-radius: 2px;
-            transition: height 0.2s ease;
+            transition: height 0.2 ease;
         }
 
         .dropdown-menu a:hover {
@@ -430,7 +430,7 @@
         .dropdown-menu a i {
             margin-right: 0.5rem;
             opacity: 0.8;
-            transition: all 0.2s ease;
+            transition: all 0.2 ease;
         }
 
         .dropdown-menu a:hover i {
@@ -451,7 +451,7 @@
             display: inline-block;
             margin-left: 0.25rem;
             font-size: 0.65rem;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3 cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-links li:hover .dropdown-arrow {
@@ -477,7 +477,7 @@
             cursor: pointer;
             font-size: 0.78rem;
             font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(12px);
             display: flex;
             align-items: center;
@@ -498,7 +498,7 @@
                 rgba(102, 126, 234, 0.2),
                 rgba(240, 147, 251, 0.2));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3 ease;
         }
 
         .user-btn:hover {
@@ -583,7 +583,7 @@
             padding: 0.35rem 0.75rem;
             backdrop-filter: blur(15px);
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow:
                 inset 0 1px 3px rgba(255, 255, 255, 0.1),
@@ -599,7 +599,7 @@
                 rgba(102, 126, 234, 0.3),
                 rgba(240, 147, 251, 0.3));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3 ease;
             z-index: -1;
         }
 
@@ -637,7 +637,7 @@
             padding: 0.25rem 0.4rem;
             outline: none;
             width: 140px;
-            transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: width 0.2 cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.8rem;
             font-weight: 400;
             letter-spacing: -0.01em;
@@ -657,7 +657,7 @@
             color: rgba(255, 255, 255, 0.8);
             cursor: pointer;
             padding: 0.25rem;
-            transition: all 0.15s ease;
+            transition: all 0.15 ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -725,7 +725,7 @@
             font-size: 1.4rem;
             margin-bottom: 3rem;
             opacity: 0.95;
-            animation: heroTextSlide 1s ease 0.2s forwards;
+            animation: heroTextSlide 1 ease 0.2 forwards;
             opacity: 0;
             max-width: 600px;
             margin-left: auto;
@@ -738,7 +738,7 @@
             gap: 1rem;
             max-width: 700px;
             margin: 0 auto;
-            animation: heroTextSlide 1s ease 0.4s forwards;
+            animation: heroTextSlide 1 ease 0.4 forwards;
             opacity: 0;
         }
 
@@ -750,7 +750,7 @@
             font-size: 1.1rem;
             outline: none;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4 cubic-bezier(0.175, 0.885, 0.32, 1.275);
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
         }
@@ -769,7 +769,7 @@
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4 cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
             position: relative;
             overflow: hidden;
@@ -783,7 +783,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            transition: left 0.5;
         }
 
         .hero-search button:hover::before {
@@ -816,7 +816,7 @@
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4 cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -831,7 +831,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4 ease;
         }
 
         .feature-card:hover::before {
@@ -853,7 +853,7 @@
             margin: 0 auto 1.5rem;
             font-size: 2rem;
             color: white;
-            transition: all 0.4s ease;
+            transition: all 0.4 ease;
             position: relative;
         }
 
@@ -913,7 +913,7 @@
             position: relative;
             font-weight: 800;
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: titlePulse 3s ease-in-out infinite;
+            animation: titlePulse 3 ease-in-out infinite;
         }
 
         @keyframes titlePulse {
@@ -929,7 +929,7 @@
             background: var(--secondary-gradient);
             margin: 1.5rem auto 0;
             border-radius: 2px;
-            animation: titleLine 2s ease-in-out infinite;
+            animation: titleLine 2 ease-in-out infinite;
         }
 
         @keyframes titleLine {
@@ -953,7 +953,7 @@
             border-radius: 24px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5 cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
             position: relative;
             overflow: hidden;
@@ -968,7 +968,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5 ease;
             transform: rotate(0deg);
         }
 
@@ -1003,12 +1003,12 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             display: inline-block;
-            transition: all 0.5s ease;
+            transition: all 0.5 ease;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
 
         .category-card:hover i {
-            animation: iconBounce 0.6s ease;
+            animation: iconBounce 0.6 ease;
         }
 
         @keyframes iconBounce {
@@ -1020,7 +1020,7 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: white;
-            transition: all 0.5s ease;
+            transition: all 0.5 ease;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -1040,7 +1040,7 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5 cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
@@ -1053,7 +1053,7 @@
             height: 6px;
             background: var(--primary-gradient);
             transform: scaleX(0);
-            transition: transform 0.5s ease;
+            transition: transform 0.5 ease;
         }
 
         .resource-card:hover {
@@ -1084,7 +1084,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
             background-size: 30px 30px;
-            animation: float 15s linear infinite;
+            animation: float 15 linear infinite;
         }
 
         .resource-image::after {
@@ -1095,7 +1095,7 @@
             width: 200%;
             height: 200%;
             background: conic-gradient(transparent, rgba(255, 255, 255, 0.3), transparent 30%);
-            animation: rotate 4s linear infinite;
+            animation: rotate 4 linear infinite;
         }
 
         @keyframes rotate {
@@ -1119,7 +1119,7 @@
             font-weight: 700;
             margin-bottom: 1rem;
             box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
-            transition: all 0.4s ease;
+            transition: all 0.4 ease;
         }
 
         .resource-card:hover .resource-category {
@@ -1133,7 +1133,7 @@
             margin-bottom: 0.8rem;
             color: white;
             line-height: 1.4;
-            transition: all 0.4s ease;
+            transition: all 0.4 ease;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -1176,7 +1176,7 @@
             background: rgba(255, 255, 255, 0.15);
             padding: 0.4rem 1rem;
             border-radius: 25px;
-            transition: all 0.4s ease;
+            transition: all 0.4 ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
         }
@@ -1198,7 +1198,7 @@
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4 cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
             position: relative;
             overflow: hidden;
@@ -1212,7 +1212,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
+            transition: left 0.6;
         }
 
         .resource-button:hover::before {
@@ -1242,7 +1242,7 @@
         }
 
         /* 标签样式 - 优化 */
-        .tags {
+        .标签 {
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
@@ -1256,7 +1256,7 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
             cursor: pointer;
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
@@ -1322,7 +1322,7 @@
         .star {
             font-size: 1.2rem;
             color: #ccc;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
         }
 
         .star.filled {
@@ -1352,7 +1352,7 @@
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
         }
 
         .comment-btn:hover {
@@ -1471,7 +1471,7 @@
             font-size: 1rem;
             font-weight: 600;
             color: white;
-            transition: all 0.4s ease;
+            transition: all 0.4 ease;
         }
 
         .sort-options select:hover {
@@ -1530,7 +1530,7 @@
         .footer-links a {
             color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
-            transition: all 0.4s ease;
+            transition: all 0.4 ease;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -1561,7 +1561,7 @@
             color: white;
             border-radius: 50%;
             text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4 cubic-bezier(0.175, 0.885, 0.32, 1.275);
             font-size: 1.2rem;
         }
 
@@ -1583,7 +1583,7 @@
         body.dark-mode {
             background: linear-gradient(-45deg, #0f0f1e, #1a1a2e, #2d2d3a, #0f0f1e);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 15 ease infinite;
         }
 
         body.dark-mode .bg-animation .shape:nth-child(1) { background: #667eea; opacity: 0.4; }
@@ -1701,7 +1701,7 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 0.8rem;
-                animation: slideDown 0.3s ease;
+                animation: slideDown 0.3 ease;
             }
 
             @keyframes slideDown {
@@ -1908,7 +1908,7 @@
         }
 
         .fade-in-up {
-            animation: fadeInUp 0.6s ease forwards;
+            animation: fadeInUp 0.6 ease forwards;
         }
 
         /* 模态框样式 - 优化 */
@@ -1923,7 +1923,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
             overflow-y: auto;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.3 ease;
         }
 
         @keyframes fadeIn {
@@ -1939,7 +1939,7 @@
             width: 90%;
             max-width: 600px;
             box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
-            animation: modalFadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: modalFadeIn 0.4 cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes modalFadeIn {
@@ -1974,7 +1974,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
             background-size: 30px 30px;
-            animation: float 20s linear infinite;
+            animation: float 20 linear infinite;
         }
 
         .modal-header h2 {
@@ -1990,7 +1990,7 @@
             font-size: 2rem;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
             position: relative;
             z-index: 1;
             line-height: 1;
@@ -2026,7 +2026,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
             background: white;
             color: var(--text-color);
         }
@@ -2060,7 +2060,7 @@
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
         }
 
         .form-btn-primary {
@@ -2101,7 +2101,7 @@
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
             box-shadow: var(--shadow-sm);
         }
 
@@ -2127,7 +2127,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             box-shadow: var(--shadow-md);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4 cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1000;
         }
 
@@ -2167,7 +2167,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            animation: islandAppear 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: islandAppear 0.4 cubic-bezier(0.4, 0, 0.2, 1) forwards;
             max-width: 380px;
             width: auto;
             min-width: 280px;
@@ -2299,7 +2299,7 @@
             font-size: 1.3rem;
             cursor: pointer;
             color: #999;
-            transition: all 0.3s ease;
+            transition: all 0.3 ease;
             padding: 0.3rem;
             line-height: 1;
         }
@@ -2352,7 +2352,7 @@
                 inset 0 -1px 0 rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 999;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .dock::before {
@@ -2380,7 +2380,7 @@
             color: white;
             font-size: 1.4rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
             background: linear-gradient(135deg,
                 rgba(255, 255, 255, 0.15) 0%,
                 rgba(255, 255, 255, 0.05) 100%);
@@ -2397,7 +2397,7 @@
                 rgba(102, 126, 234, 0.4),
                 rgba(240, 147, 251, 0.4));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3 ease;
             border-radius: 14px;
         }
 
@@ -2650,6 +2650,9 @@
                     <h3>暗黑模式</h3>
                     <p>护眼舒适的浏览</p>
                 </div>
+                <div>
+                <div class="feature-card">
+                    <h1>由刘远航制作而成,不能可以自己使用,因为是全html文件,因此有些功能未能实现</h1>
             </div>
         </div>
     </section>
